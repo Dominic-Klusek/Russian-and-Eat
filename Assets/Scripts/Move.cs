@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour {
 
-	public Character character;//reference to character
+	public Character character;//reference to character script
 	Rigidbody2D bodyCharacter;//reference to character's Rigidbody2D
 	Transform positionCharacter;//reference to character's Transform
 	Animator animatorCharacter;//reference to character's Animator Controller
@@ -12,59 +12,70 @@ public class Move : MonoBehaviour {
 	SpriteRenderer mousePlace;
 	Vector3 v;//static Vector3 variable that is used very ofthen in script
 
+	private IEnumerator moveXCopy;
+	private IEnumerator moveYCopy;
+
 	// Use this for initialization
 	void Start () {
 		bodyCharacter = character.GetComponent<Rigidbody2D> ();//reference to character Rigidbody2D
 		positionCharacter = character.GetComponent<Transform> ();//reference to character Transform
 		mousePlace = GetComponent<SpriteRenderer> ();
 		animatorCharacter = character.GetComponent<Animator> ();
+		moveXCopy = MoveX ();
+		moveYCopy = MoveY ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	}
+
+		
+
 	//when mouse hovers over collider, enable sprite in attahed SpriteRenderer
 	void OnMouseEnter()
 	{
-		mousePlace.enabled = true;
+		mousePlace.color = new Color(0,0,0, 0.5f);
+
 	}
+
 	//when mouse moves from collider, disable sprite in attahed SpriteRenderer
 	void OnMouseExit()
 	{
-		mousePlace.enabled = false;
+		mousePlace.color = new Color(1,1,1, 1f);
 	}
 
 	//called on when click on collider
 	void OnMouseDown()
 	{
 		bool leftClick = Input.GetMouseButtonDown (0);
-
 		//if we left clicked, and we are not moving
 		if (leftClick && character.finishedMovement) {
-			
 			v = Camera.main.ScreenToWorldPoint (Input.mousePosition);//function to get input from mousecursor, and turn it into a Vector3
 
-			v = fixedCoordinates ();//fix coordinates from mouse click
+			fixedCoordinates ();//fix coordinates from mouse click
 
-			StartCoroutine(MoveX ());//coroutine to move in horizontal axis
+			StartCoroutine("MoveX");//coroutine to move in horizontal axis
 
-			StartCoroutine(MoveY ());//coroutine to move in the vertical axis
-
+			StartCoroutine("MoveY");//coroutine to move in the vertical axis
 		}
 	}
+
 	//check if coordinates of positionCharacter == Vector3 v
 	void checkMovement()
 	{
 		//if coordinates are equal, movement is finished set finishedMovement to true, otherwise set finishedmovement to false
-		if (positionCharacter.position.x == v.x && positionCharacter.position.y == v.y)
+		if (positionCharacter.position.x == v.x && positionCharacter.position.y == v.y) {
 			character.finishedMovement = true;
-		else
+			StopCoroutine ("MoveX");
+			StopCoroutine ("MoveY");
+		} else {
 			character.finishedMovement = false;
-			
+		}
 	}
+
 	//coroutine that changes x position of character by 1 until it is equal to where player clicked
 	IEnumerator MoveX()
-	{
+	{ 	
 		//while loop doesn't work, need to figure out why
 		//while(positionCharacter.position.x != v.x)
 		//while the clicked position doesn't equal the object's position stay in loop
@@ -87,6 +98,7 @@ public class Move : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
 		}
 		checkMovement ();//check if movement is finished
+		yield return null; //Done
 	}
 
 	//coroutine that changes y position of character by 1 until it is equal to where player clicked
@@ -100,22 +112,21 @@ public class Move : MonoBehaviour {
 				animatorCharacter.SetBool ("WalkingLeft", false);//if these are true, set them to false
 				animatorCharacter.SetBool ("WalkingRight", false);
 				bodyCharacter.MovePosition (new Vector2 (positionCharacter.position.x, positionCharacter.position.y - 1));//decrement y position
-			}
-			else if (positionCharacter.position.y < v.y) {
+			} else if (positionCharacter.position.y < v.y) {
 				animatorCharacter.SetBool ("WalkingForward", false);//set appropriate vertical bool
 				animatorCharacter.SetBool ("WalkingBackward", true);
 				animatorCharacter.SetBool ("WalkingLeft", false);//if these are true, set them to false
 				animatorCharacter.SetBool ("WalkingRight", false);
 				bodyCharacter.MovePosition (new Vector2 (positionCharacter.position.x, positionCharacter.position.y + 1));//increment y position
 			}
-				
 			yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
 		}
 		checkMovement ();//check if movement is finished
+		yield return null; //Done
 	}
 
 	//function fixes vector so that it correlates correctly to the collider tiles, then return fixed vector
-	Vector3 fixedCoordinates()
+	void fixedCoordinates()
 	{
 		float nx, ny;
 		//if v.x is negative, we need to treat it differently from when it is positive
@@ -155,7 +166,7 @@ public class Move : MonoBehaviour {
 			//if decimal is greater than or equal to 0.5, we round up
 			if ((v.y % 1f) > 0.5f) {
 				ny = Mathf.Ceil (v.y);
-			} 
+			}
 			//else round down
 			else {
 				ny = Mathf.Floor (v.y);
@@ -163,7 +174,5 @@ public class Move : MonoBehaviour {
 		}
 
 		v = new Vector3 (nx, ny, Mathf.Floor (v.z));//vector to send to move functions
-
-		return v;//return vector
 	}
 }
