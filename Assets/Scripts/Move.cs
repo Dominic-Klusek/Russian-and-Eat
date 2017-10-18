@@ -12,17 +12,12 @@ public class Move : MonoBehaviour {
 	SpriteRenderer mousePlace;
 	Vector3 v;//static Vector3 variable that is used very ofthen in script
 
-	private IEnumerator moveXCopy;
-	private IEnumerator moveYCopy;
-
 	// Use this for initialization
 	void Start () {
 		bodyCharacter = character.GetComponent<Rigidbody2D> ();//reference to character Rigidbody2D
 		positionCharacter = character.GetComponent<Transform> ();//reference to character Transform
 		mousePlace = GetComponent<SpriteRenderer> ();
 		animatorCharacter = character.GetComponent<Animator> ();
-		moveXCopy = MoveX ();
-		moveYCopy = MoveY ();
 	}
 	
 	// Update is called once per frame
