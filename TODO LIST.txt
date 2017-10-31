@@ -1,3 +1,0 @@
-1. Change Sprite/Animator
-2. Cooking
-3. Improve Main Menu
