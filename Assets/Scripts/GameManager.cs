@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
@@ -28,6 +30,19 @@ public class GameManager : MonoBehaviour {
 			Destroy (gameObject);
 
 		DontDestroyOnLoad (gameObject);//don't destroy official gamemanager
+	}
+	public void StartGame()
+	{
+		SceneManager.LoadScene("Scene1");
+	}
+
+	public void LoadCredits()
+	{
+		SceneManager.LoadScene("Credits");
+	}
+	public void LoadMenu()
+	{
+		SceneManager.LoadScene("Menu");
 	}
 	
 	// Update is called once per frame
