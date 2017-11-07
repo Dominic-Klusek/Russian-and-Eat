@@ -568,8 +568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charSelect: 0
-  ingredientsFile: {fileID: 0}
-  recipesFile: {fileID: 0}
+  ingredientsFile: {fileID: 4900000, guid: 965b4b7ae44dd6f4998d5e421716a25c, type: 3}
+  recipesFile: {fileID: 4900000, guid: fe8d4956f009b144a90dea69c4cca204, type: 3}
 --- !u!4 &539347107
 Transform:
   m_ObjectHideFlags: 0
