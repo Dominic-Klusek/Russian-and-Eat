@@ -5,11 +5,30 @@ using UnityEngine;
 public class Dish {
     public enum CookingStatus { RAW, BAKED, STOVE_COOKED, BOILED };
 
-    public Dish(string name, List<Ingredient> ingredients, CookingStatus status)
+    public Dish(string name, List<Ingredient> ingredients, CookingStatus cookingStatus)
     {
         this.name = name;
         this.ingredients = ingredients;
-        this.cookingStatus = status;
+        this.cookingStatus = cookingStatus;
+    }
+
+    public Dish(string name, Ingredient[] ingredients, CookingStatus cookingStatus)
+    {
+        this.name = name;
+        this.ingredients = new List<Ingredient>(ingredients);
+        this.cookingStatus = cookingStatus;
+    }
+
+    public Dish startNewEmptyDish()
+    {
+        return new Dish("Unfinished Dish", new List<Ingredient>(), CookingStatus.RAW);
+    }
+
+    // this may not take into account having a different order of ingredients.
+    public bool dishMatches(Dish dish)
+    {
+        return ingredients.Equals(dish.ingredients) && 
+            cookingStatus.Equals(dish.cookingStatus);
     }
 
     private string name;
