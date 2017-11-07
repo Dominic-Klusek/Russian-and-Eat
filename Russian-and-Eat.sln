@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Russian-and-Eat", "Assembly-CSharp.csproj", "{A9EADF02-D6AF-DBE7-312F-1F5AEB04EAF4}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Russian-and-Eat", "Russian-and-Eat.csproj", "{96B5953B-AB34-3759-077D-627629F4431E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A9EADF02-D6AF-DBE7-312F-1F5AEB04EAF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9EADF02-D6AF-DBE7-312F-1F5AEB04EAF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9EADF02-D6AF-DBE7-312F-1F5AEB04EAF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9EADF02-D6AF-DBE7-312F-1F5AEB04EAF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96B5953B-AB34-3759-077D-627629F4431E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96B5953B-AB34-3759-077D-627629F4431E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96B5953B-AB34-3759-077D-627629F4431E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96B5953B-AB34-3759-077D-627629F4431E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

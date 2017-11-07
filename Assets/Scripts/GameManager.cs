@@ -9,16 +9,16 @@ public class GameManager : MonoBehaviour {
 	public int charSelect = 0;
     public TextAsset ingredientsFile;
     public TextAsset recipesFile;
-    private string fileDelim = "\n";
 
-    private List<Ingredient> allIngredients = new List<Ingredient>();
+    private List<Ingredient> allIngredients;
     private List<Dish> allDishes;
 
     private void Awake()
     {
-        string [] fileContents = ingredientsFile.text.Split(fileDelim [0]);
-        foreach (string i in fileContents)
-            allIngredients.Add(new Ingredient(i));
+        allIngredients = new List<Ingredient>();
+        initIngredients();
+        allDishes = new List<Dish>();
+        initDishes();
     }
 
     // Use this for initialization
@@ -48,5 +48,23 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}
-		
+
+    private void initIngredients()
+    {
+        string detailDelim = ";";
+        string lineDelim = "\n";
+        string[] fileLines = ingredientsFile.text.Split(lineDelim[0]);
+        foreach (string line in fileLines)
+        {
+            string[] ingredientDetails = line.Split(detailDelim[0]);
+            allIngredients.Add(new Ingredient(ingredientDetails[0],
+                ingredientDetails[1],
+                ingredientDetails[2]));
+        }
+    }
+
+    private void initDishes()
+    {
+        
+    }
 }
