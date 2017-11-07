@@ -9,6 +9,13 @@ public class Ingredient {
         this.russianName = russianName;
     }
 
+    public Ingredient(string ingredientName)
+    {
+        this.ingredientName = ingredientName;
+        transliteration = "N/A";
+        russianName = "N/A";
+    }
+
     public override string ToString()
     {
         return this.ingredientName + ", " +
