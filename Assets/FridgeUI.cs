@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fridge : MonoBehaviour {
+public class FridgeUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,5 +12,9 @@ public class Fridge : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+	public void exitClick()
+	{
+		Destroy(GameObject.Find("FridgeUI(Clone)"));
 	}
 }

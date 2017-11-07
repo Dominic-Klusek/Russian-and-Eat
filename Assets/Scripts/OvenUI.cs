@@ -17,6 +17,5 @@ public class OvenUI : MonoBehaviour {
 	public void exitClick()
 	{
 		Destroy(GameObject.Find("OvenUI(Clone)"));
-		print ("clicked");
 	}
 }

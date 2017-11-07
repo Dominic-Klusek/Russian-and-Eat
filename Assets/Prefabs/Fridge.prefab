@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4989512537104450}
   - component: {fileID: 212906435153145510}
   m_Layer: 0
-  m_Name: Bottom
+  m_Name: FridgeBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4708965918144740}
   - component: {fileID: 212187980910076390}
   m_Layer: 0
-  m_Name: Top
+  m_Name: FridgeTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1231493536604732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.28, y: 2.19, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4708965918144740}
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac50869ccd4db44f585b144c03d2e167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fridgeUI: {fileID: 0}
 --- !u!212 &212187980910076390
 SpriteRenderer:
   m_ObjectHideFlags: 1
