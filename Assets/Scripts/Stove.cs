@@ -34,9 +34,8 @@ public class Stove : MonoBehaviour {
 	//called on when click on collider
 	void OnMouseDown()
 	{
-		bool leftClick = Input.GetMouseButtonDown (0);
-		print (leftClick);
-		Instantiate (ovenUI);
+		if(GameObject.Find("OvenUI(Clone)") == null)//don't allow multiple instances
+			Instantiate (ovenUI);//create instance of oven ui
 	}
 
 }

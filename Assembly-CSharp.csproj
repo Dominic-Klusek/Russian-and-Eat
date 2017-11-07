@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Fridge.cs" />
+     <Compile Include="Assets\OvenUI.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\CharacterCreation.cs" />
      <Compile Include="Assets\Scripts\Counter.cs" />
