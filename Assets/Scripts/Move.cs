@@ -89,10 +89,12 @@ public class Move : MonoBehaviour {
 				animatorCharacter.SetBool ("WalkingRight", true);
 				bodyCharacter.MovePosition (new Vector2 (positionCharacter.position.x + 1, positionCharacter.position.y));//increment x position
 			}
-			
+
 			yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
 		}
 		checkMovement ();//check if movement is finished
+		animatorCharacter.SetBool ("WalkingLeft", false);
+		animatorCharacter.SetBool ("WalkingRight", false);
 		yield return null; //Done
 	}
 
@@ -117,6 +119,8 @@ public class Move : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
 		}
 		checkMovement ();//check if movement is finished
+		animatorCharacter.SetBool ("WalkingForward", false);
+		animatorCharacter.SetBool ("WalkingBackward", false);
 		yield return null; //Done
 	}
 
