@@ -11,12 +11,28 @@ public class Dish {
         this.ingredients = ingredients;
         this.cookingStatus = cookingStatus;
     }
-
+    
     public Dish(string name, Ingredient[] ingredients, CookingStatus cookingStatus)
     {
         this.name = name;
         this.ingredients = new List<Ingredient>(ingredients);
         this.cookingStatus = cookingStatus;
+    }
+
+    public Dish(string name, string[] ingredients, CookingStatus cookingStatus)
+    {
+        List <Ingredient> ingredientList = new List<Ingredient>();
+        foreach (string str in ingredients)
+            ingredientList.Add(new Ingredient(str));
+
+        this.name = name;
+        this.ingredients = ingredientList;
+        this.cookingStatus = cookingStatus;
+    }
+
+    public override string ToString()
+    {
+        return name + ": " + ingredients.ToString() + " " + cookingStatus;
     }
 
     public Dish startNewEmptyDish()
@@ -29,6 +45,26 @@ public class Dish {
     {
         return ingredients.Equals(dish.ingredients) && 
             cookingStatus.Equals(dish.cookingStatus);
+    }
+
+    public string getName()
+    {
+        return name;
+    }
+    
+    public List<Ingredient> getIngredientList()
+    {
+        return ingredients;
+    }
+
+    public Ingredient[] getIngredientArray()
+    {
+        return ingredients.ToArray();
+    }
+
+    public CookingStatus getCookingStatus()
+    {
+        return cookingStatus;
     }
 
     private string name;
