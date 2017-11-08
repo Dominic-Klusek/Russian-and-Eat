@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,22 +16,31 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
+        //if this is not the official gamemanager, destroy it
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);//don't destroy official gamemanager
+
         allIngredients = new List<Ingredient>();
         initIngredients();
         allDishes = new List<Dish>();
         initDishes();
+
+        foreach (Ingredient ing in allIngredients)
+            Debug.Log(ing.ToString());
+
+        foreach (Dish d in allDishes)
+            Debug.Log(d.ToString());
     }
 
     // Use this for initialization
     void Start () {
-		//if this is not the official gamemanager, destroy it
-		if (instance == null)
-			instance = this;
-		else
-			Destroy (gameObject);
-
-		DontDestroyOnLoad (gameObject);//don't destroy official gamemanager
+		
 	}
+
 	public void StartGame()
 	{
 		SceneManager.LoadScene("Scene1");
@@ -47,16 +57,17 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 	}
 
     private void initIngredients()
     {
-        string detailDelim = ";";
-        string lineDelim = "\n";
-        string[] fileLines = ingredientsFile.text.Split(lineDelim[0]);
+        char detailDelim = '\t';
+        char lineDelim = '\n';
+        string[] fileLines = ingredientsFile.text.Split(lineDelim);
         foreach (string line in fileLines)
         {
-            string[] ingredientDetails = line.Split(detailDelim[0]);
+            string[] ingredientDetails = line.Split(detailDelim);
             allIngredients.Add(new Ingredient(ingredientDetails[0],
                 ingredientDetails[1],
                 ingredientDetails[2]));
@@ -65,6 +76,19 @@ public class GameManager : MonoBehaviour {
 
     private void initDishes()
     {
-        
+        char detailDelim = '\t';
+        char ingredientDelim =',';
+        char lineDelim = '\n';
+        string[] fileLines = recipesFile.text.Split(lineDelim);
+        foreach (string line in fileLines)
+        {
+            string[] dishDetails = line.Split(detailDelim);
+            Debug.Log(dishDetails.Length);
+            string[] ingredients = dishDetails[1].Split(ingredientDelim);
+            allDishes.Add(new Dish(dishDetails[0],
+                ingredients,
+                (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()))
+            );
+        }
     }
 }
