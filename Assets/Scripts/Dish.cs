@@ -32,7 +32,11 @@ public class Dish {
 
     public override string ToString()
     {
-        return name + ": " + ingredients.ToString() + " " + cookingStatus;
+        string ret = name + ": ";
+        foreach (Ingredient ing in ingredients)
+            ret += ing.getIngredientName() + ", ";
+        ret += cookingStatus;
+        return ret;
     }
 
     public Dish startNewEmptyDish()
