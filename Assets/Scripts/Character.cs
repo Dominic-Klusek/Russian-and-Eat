@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
-	public GameManager gm;
 	public bool finishedMovement = true;
 
 	// Use this for initialization
