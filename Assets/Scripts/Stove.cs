@@ -11,6 +11,7 @@ public class Stove : MonoBehaviour {
 	void Start () {
 		ovenTop = GameObject.Find ("Top");
 		ovenBottom = GameObject.Find ("Bottom");
+        ovenUI.tag = "Popup UI";
 	}
 	
 	// Update is called once per frame
@@ -34,8 +35,9 @@ public class Stove : MonoBehaviour {
 	//called on when click on collider
 	void OnMouseDown()
 	{
-		if(GameObject.Find("OvenUI(Clone)") == null)//don't allow multiple instances
-			Instantiate (ovenUI);//create instance of oven ui
-	}
+        //prevent multiple instances of popup UIs from existing
+        if (GameObject.FindGameObjectWithTag("Popup UI") == null)
+            Instantiate(ovenUI);//create instance of oven ui
+    }
 
 }

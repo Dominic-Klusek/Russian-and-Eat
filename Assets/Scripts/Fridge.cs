@@ -12,6 +12,7 @@ public class Fridge : MonoBehaviour {
 	void Start () {
 		fridgeTop = GameObject.Find ("FridgeTop");
 		fridgeBottom = GameObject.Find ("FridgeBottom");
+        fridgeUI.tag = "Popup UI";
 	}
 
 	// Update is called once per frame
@@ -35,7 +36,8 @@ public class Fridge : MonoBehaviour {
 	//called on when click on collider
 	void OnMouseDown()
 	{
-		if(GameObject.Find("FridgeUI(Clone)") == null)//don't allow multiple instances
+        //prevent multiple instances of popup UIs from existing
+        if (GameObject.FindGameObjectWithTag("Popup UI") == null)
 			Instantiate (fridgeUI);//create instance of oven ui
 	}
 
