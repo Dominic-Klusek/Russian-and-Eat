@@ -16,13 +16,10 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
-        //if this is not the official gamemanager, destroy it
         if (instance == null)
             instance = this;
         else
             Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);//don't destroy official gamemanager
 
         allIngredients = new List<Ingredient>();
         initIngredients();
