@@ -35,7 +35,7 @@ public class Fridge : MonoBehaviour {
 	//called on when click on collider
 	void OnMouseDown()
 	{
-		if(GameObject.Find("FridgeUI(Clone))") == null)//don't allow multiple instances
+		if(GameObject.Find("FridgeUI(Clone)") == null)//don't allow multiple instances
 			Instantiate (fridgeUI);//create instance of oven ui
 	}
 
