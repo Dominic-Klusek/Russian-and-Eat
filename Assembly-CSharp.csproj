@@ -52,11 +52,19 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Character.cs" />
+     <Compile Include="Assets\Scripts\CharacterCreation.cs" />
      <Compile Include="Assets\Scripts\Counter.cs" />
+     <Compile Include="Assets\Scripts\CreditsButton.cs" />
+     <Compile Include="Assets\Scripts\DDOL.cs" />
      <Compile Include="Assets\Scripts\Dish.cs" />
+     <Compile Include="Assets\Scripts\Fridge.cs" />
+     <Compile Include="Assets\Scripts\FridgeUI.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Ingredient.cs" />
+     <Compile Include="Assets\Scripts\MenuButtons.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
+     <Compile Include="Assets\Scripts\OvenUI.cs" />
+     <Compile Include="Assets\Scripts\Stove.cs" />
      <None Include="Assets\Data Text Files\recipes.txt" />
      <None Include="Assets\Data Text Files\ingredients.txt" />
  <Reference Include="UnityEngine.UI">

@@ -12,17 +12,12 @@ public class Move : MonoBehaviour {
 	SpriteRenderer mousePlace;
 	Vector3 v;//static Vector3 variable that is used very ofthen in script
 
-	private IEnumerator moveXCopy;
-	private IEnumerator moveYCopy;
-
 	// Use this for initialization
 	void Start () {
 		bodyCharacter = character.GetComponent<Rigidbody2D> ();//reference to character Rigidbody2D
 		positionCharacter = character.GetComponent<Transform> ();//reference to character Transform
 		mousePlace = GetComponent<SpriteRenderer> ();
 		animatorCharacter = character.GetComponent<Animator> ();
-		moveXCopy = MoveX ();
-		moveYCopy = MoveY ();
 	}
 	
 	// Update is called once per frame
@@ -31,14 +26,14 @@ public class Move : MonoBehaviour {
 
 		
 
-	//when mouse hovers over collider, enable sprite in attahed SpriteRenderer
+	//when mouse hovers over collider, change color of child sprite
 	void OnMouseEnter()
 	{
 		mousePlace.color = new Color(0,0,0, 0.5f);
 
 	}
 
-	//when mouse moves from collider, disable sprite in attahed SpriteRenderer
+	//when mouse moves from collider, change color of child sprite
 	void OnMouseExit()
 	{
 		mousePlace.color = new Color(1,1,1, 1f);
@@ -94,10 +89,12 @@ public class Move : MonoBehaviour {
 				animatorCharacter.SetBool ("WalkingRight", true);
 				bodyCharacter.MovePosition (new Vector2 (positionCharacter.position.x + 1, positionCharacter.position.y));//increment x position
 			}
-			
+
 			yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
 		}
 		checkMovement ();//check if movement is finished
+		animatorCharacter.SetBool ("WalkingLeft", false);
+		animatorCharacter.SetBool ("WalkingRight", false);
 		yield return null; //Done
 	}
 
@@ -122,6 +119,8 @@ public class Move : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
 		}
 		checkMovement ();//check if movement is finished
+		animatorCharacter.SetBool ("WalkingForward", false);
+		animatorCharacter.SetBool ("WalkingBackward", false);
 		yield return null; //Done
 	}
 
