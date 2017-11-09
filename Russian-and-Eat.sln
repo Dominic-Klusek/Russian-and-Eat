@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Russian-and-Eat", "Russian-and-Eat.csproj", "{96B5953B-AB34-3759-077D-627629F4431E}"
 EndProject
 Global
