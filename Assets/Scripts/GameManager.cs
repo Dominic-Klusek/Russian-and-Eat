@@ -41,15 +41,19 @@ public class GameManager : MonoBehaviour {
 	public void StartGame()
 	{
 		SceneManager.LoadScene("Scene1");
+		Debug.Log ("Loaded scene1.");
 	}
 
 	public void LoadCredits()
 	{
 		SceneManager.LoadScene("Credits");
+		Debug.Log ("Loaded Credits.");
+
 	}
 	public void LoadMenu()
 	{
 		SceneManager.LoadScene("Menu");
+		Debug.Log ("Loaded Menu.");
 	}
 	
 	// Update is called once per frame
