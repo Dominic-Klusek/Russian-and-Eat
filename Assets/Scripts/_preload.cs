@@ -11,11 +11,13 @@ using UnityEngine.SceneManagement;
 
 public class _preload:MonoBehaviour
 	{
+		public string sceneName = "";
 		void Awake()
 		{
 				GameObject check = GameObject.Find("__app");
 				if (check==null)
 				{
+					DontDestroyOnLoad (GameObject.FindWithTag ("MainCamera"));
 					UnityEngine.SceneManagement.SceneManager.LoadScene("_preload");
 					Debug.Log ("Preloading...");
 				}
