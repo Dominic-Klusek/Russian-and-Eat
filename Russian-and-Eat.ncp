@@ -1,0 +1,132 @@
+<Project>
+  <Name>Russian-and-Eat</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>russian-and-eat</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Dish</Name>
+        <Access>Public</Access>
+        <Location left="10" top="10" />
+        <Size width="243" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public List ingredients { get; }</Member>
+        <Member type="Property">public CookingStatus cookingStatus { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>Ingredient</Name>
+        <Access>Public</Access>
+        <Location left="371" top="10" />
+        <Size width="162" height="146" />
+        <Collapsed>False</Collapsed>
+        <Value>WATER</Value>
+        <Value>FLOUR</Value>
+        <Value>SUGAR</Value>
+        <Value>EGG</Value>
+        <Value>etc</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>CookingStatus</Name>
+        <Access>Public</Access>
+        <Location left="371" top="168" />
+        <Size width="162" height="129" />
+        <Collapsed>False</Collapsed>
+        <Value>RAW</Value>
+        <Value>STOVE_COOKED</Value>
+        <Value>BAKED</Value>
+        <Value>FRIED</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>TicketRail</Name>
+        <Access>Public</Access>
+        <Location left="619" top="10" />
+        <Size width="175" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public List tickets { get; }</Member>
+        <Member type="Method">public bool doesDishMatchTicket()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Ticket</Name>
+        <Access>Public</Access>
+        <Location left="859" top="10" />
+        <Size width="162" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Food food { get; set; }</Member>
+        <Member type="Property">public int timer { get; }</Member>
+        <Member type="Property">public int counter { get; }</Member>
+        <Member type="Method">public string foodToString()</Member>
+        <Member type="Method">public void startTimer()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>Food</Name>
+        <Access>Public</Access>
+        <Location left="1068" top="10" />
+        <Size width="162" height="129" />
+        <Collapsed>False</Collapsed>
+        <Value>BREAD</Value>
+        <Value>CAKE</Value>
+        <Value>STEAK</Value>
+        <Value>etc</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>Player</Name>
+        <Access>Public</Access>
+        <Location left="10" top="362" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public int money { get; set; }</Member>
+        <Member type="Property">public bool isMale { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>278</X>
+          <Y>65</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1046</X>
+          <Y>90</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1044</X>
+          <Y>90</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
