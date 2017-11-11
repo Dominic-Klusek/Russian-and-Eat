@@ -55,9 +55,15 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene("Menu");
 		Debug.Log ("Loaded Menu.");
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+        Debug.Log("Loaded " + scene + ".");
+    }
+
+    // Update is called once per frame
+    void Update () {
 
 	}
 

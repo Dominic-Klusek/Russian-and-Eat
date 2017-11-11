@@ -14,14 +14,6 @@ public class _loadScene : MonoBehaviour {
 
 		Destroy (GameObject.FindWithTag ("MainCamera"));
 
-		if (scene == "scene1") {
-			game.StartGame();
-		}
-		if (scene == "Credits") {
-			game.LoadCredits();
-		}
-		if (scene == "Menu") {
-			game.LoadMenu();
-		}
+        game.LoadScene(scene);
 	}	
 }
