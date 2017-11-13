@@ -20,23 +20,21 @@ public class GameManager : MonoBehaviour {
             instance = this;
         else
             Destroy(gameObject);
+    }
 
+    // Use this for initialization
+    void Start () {
         allIngredients = new List<Ingredient>();
         initIngredients();
         allDishes = new List<Dish>();
         initDishes();
 
-        foreach (Ingredient ing in allIngredients)
-            Debug.Log(ing.ToString());
+        //foreach (Ingredient ing in allIngredients)
+        //    Debug.Log(ing.ToString());
 
-        foreach (Dish d in allDishes)
-            Debug.Log(d.ToString());
+        //foreach (Dish d in allDishes)
+        //    Debug.Log(d.ToString());
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 
 	public void StartGame()
 	{
@@ -47,6 +45,7 @@ public class GameManager : MonoBehaviour {
 	{
 		SceneManager.LoadScene("Credits");
 	}
+
 	public void LoadMenu()
 	{
 		SceneManager.LoadScene("Menu");
