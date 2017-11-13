@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Dish {
-    public enum CookingStatus { RAW, BAKED, STOVE_COOKED, BOILED };
+    public enum CookingStatus { RAW, BAKED, STOVE_COOKED, BOILED, FRIED };
 
     public Dish(string name, List<Ingredient> ingredients, CookingStatus cookingStatus)
     {
@@ -39,7 +39,7 @@ public class Dish {
         return ret;
     }
 
-    public Dish startNewEmptyDish()
+    public static Dish getEmptyDish()
     {
         return new Dish("Unfinished Dish", new List<Ingredient>(), CookingStatus.RAW);
     }
@@ -69,6 +69,11 @@ public class Dish {
     public CookingStatus getCookingStatus()
     {
         return cookingStatus;
+    }
+
+    public void setCookingStatus(CookingStatus cookingStatus)
+    {
+        this.cookingStatus = cookingStatus;
     }
 
     private string name;
