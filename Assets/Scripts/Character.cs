@@ -4,14 +4,35 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 	public bool finishedMovement = true;
+    private Dish genericDish;
 
 	// Use this for initialization
 	void Start () {
-		
+        genericDish = Dish.getEmptyDish();
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
+        Debug.Log(genericDish.getCookingStatus());
 	}
-		
+	
+    public void bakeDish()
+    {
+        genericDish.setCookingStatus(Dish.CookingStatus.BAKED);
+    }
+
+    public void stoveCookDish()
+    {
+        genericDish.setCookingStatus(Dish.CookingStatus.STOVE_COOKED);
+    }
+
+    public void boilDish()
+    {
+        genericDish.setCookingStatus(Dish.CookingStatus.BOILED);
+    }
+
+    public void fryDish()
+    {
+        genericDish.setCookingStatus(Dish.CookingStatus.FRIED);
+    }
 }
