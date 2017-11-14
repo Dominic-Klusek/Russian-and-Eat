@@ -97,4 +97,14 @@ public class GameManager : MonoBehaviour {
             );
         }
     }
+
+    public List<Ingredient> getAllIngredients()
+    {
+        return allIngredients;
+    }
+
+    public List<Dish> getAllDishes()
+    {
+        return allDishes;
+    }
 }
