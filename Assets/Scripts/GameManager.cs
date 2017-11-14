@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
-	public int charSelect = 0;
     public TextAsset ingredientsFile;
     public TextAsset recipesFile;
+	public bool femaleCharacter = false;
 
     private List<Ingredient> allIngredients;
     private List<Dish> allDishes;
@@ -38,10 +38,11 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
+
 	public void StartGame()
 	{
-		SceneManager.LoadScene("Scene1");
-		Debug.Log ("Loaded scene1.");
+		SceneManager.LoadScene("CharacterCreation");
+		Debug.Log ("Loaded CharacterCreation.");
 	}
 
 	public void LoadCredits()
@@ -54,6 +55,12 @@ public class GameManager : MonoBehaviour {
 	{
 		SceneManager.LoadScene("Menu");
 		Debug.Log ("Loaded Menu.");
+	}
+
+	public void LoadLevel1()
+	{
+		SceneManager.LoadScene("scene1");
+		Debug.Log ("Loaded scene1.");
 	}
 
     public void LoadScene(string scene)
