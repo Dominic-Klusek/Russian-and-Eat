@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour {
     public TextAsset ingredientsFile;
     public TextAsset recipesFile;
 	public bool femaleCharacter = false;
-    public TextAsset ingredientsFile;
-    public TextAsset recipesFile;
 
     private List<Ingredient> allIngredients;
     private List<Dish> allDishes;
