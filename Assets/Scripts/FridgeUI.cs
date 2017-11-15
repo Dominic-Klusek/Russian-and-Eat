@@ -21,10 +21,13 @@ public class FridgeUI : MonoBehaviour {
             // false makes its transform local to the new parent
             button.transform.SetParent(scrollContentContainer.transform, false);
             button.transform.Translate(0, -ingredientButtonsSpacing * i, 0);
-            button.AddComponent(typeof(Ingredient));
-            Ingredient buttonIngredient = button.GetComponent<Ingredient>();
-            buttonIngredient = ingredientList[i];
-            Debug.Log(buttonIngredient.ToString());
+
+            Ingredient buttonIngredient = ingredientList[i];
+
+            Button buttonElement = button.GetComponent<Button>();
+            buttonElement.GetComponentInChildren<Text>().text = buttonIngredient.ToString();
+            Character player = GameObject.FindObjectOfType<Character>();
+            buttonElement.onClick.AddListener(delegate { player.addIngredientToDish(buttonIngredient); });
         }
     }
 	
