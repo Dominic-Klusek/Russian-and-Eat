@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
-	public int charSelect = 0;
     public TextAsset ingredientsFile;
     public TextAsset recipesFile;
+	public bool femaleCharacter = false;
 
     private List<Ingredient> allIngredients;
     private List<Dish> allDishes;
@@ -60,7 +60,11 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(scene);
         Debug.Log("Loaded " + scene + ".");
     }
-
+	public void LoadLevel1()
+	{
+		SceneManager.LoadScene("scene1");
+		Debug.Log ("Loaded scene1.");
+	}
     // Update is called once per frame
     void Update () {
 

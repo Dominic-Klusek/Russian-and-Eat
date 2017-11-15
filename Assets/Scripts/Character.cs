@@ -9,13 +9,19 @@ public class Character : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         genericDish = Dish.getEmptyDish();
+        GameManager game = Object.FindObjectOfType<GameManager>();
+		if (game.femaleCharacter == true){
+			Animator animator;
+			animator = this.GetComponent<Animator>();
+			animator.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("AnimatorControllers/chef_female", typeof(RuntimeAnimatorController )));
+		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         Debug.Log(genericDish.getCookingStatus());
 	}
-	
+		
     public void bakeDish()
     {
         genericDish.setCookingStatus(Dish.CookingStatus.BAKED);
