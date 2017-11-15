@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
     public TextAsset ingredientsFile;
     public TextAsset recipesFile;
 	public bool femaleCharacter = false;
+    public TextAsset ingredientsFile;
+    public TextAsset recipesFile;
 
     private List<Ingredient> allIngredients;
     private List<Dish> allDishes;
@@ -20,29 +22,26 @@ public class GameManager : MonoBehaviour {
             instance = this;
         else
             Destroy(gameObject);
+    }
 
+    // Use this for initialization
+    void Start () {
         allIngredients = new List<Ingredient>();
         initIngredients();
         allDishes = new List<Dish>();
         initDishes();
 
-        foreach (Ingredient ing in allIngredients)
-            Debug.Log(ing.ToString());
+        //foreach (Ingredient ing in allIngredients)
+        //    Debug.Log(ing.ToString());
 
-        foreach (Dish d in allDishes)
-            Debug.Log(d.ToString());
+        //foreach (Dish d in allDishes)
+        //    Debug.Log(d.ToString());
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-
 
 	public void StartGame()
 	{
-		SceneManager.LoadScene("CharacterCreation");
-		Debug.Log ("Loaded CharacterCreation.");
+		SceneManager.LoadScene("Scene1");
+		Debug.Log ("Loaded scene1.");
 	}
 
 	public void LoadCredits()
@@ -51,16 +50,11 @@ public class GameManager : MonoBehaviour {
 		Debug.Log ("Loaded Credits.");
 
 	}
+
 	public void LoadMenu()
 	{
 		SceneManager.LoadScene("Menu");
 		Debug.Log ("Loaded Menu.");
-	}
-
-	public void LoadLevel1()
-	{
-		SceneManager.LoadScene("scene1");
-		Debug.Log ("Loaded scene1.");
 	}
 
     public void LoadScene(string scene)
@@ -68,7 +62,11 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(scene);
         Debug.Log("Loaded " + scene + ".");
     }
-
+	public void LoadLevel1()
+	{
+		SceneManager.LoadScene("scene1");
+		Debug.Log ("Loaded scene1.");
+	}
     // Update is called once per frame
     void Update () {
 
@@ -104,5 +102,15 @@ public class GameManager : MonoBehaviour {
                 (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()))
             );
         }
+    }
+
+    public List<Ingredient> getAllIngredients()
+    {
+        return allIngredients;
+    }
+
+    public List<Dish> getAllDishes()
+    {
+        return allDishes;
     }
 }
