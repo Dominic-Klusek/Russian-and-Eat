@@ -23,6 +23,12 @@ public class Ingredient : MonoBehaviour {
                this.russianName;
     }
 
+    public bool Equals(Ingredient other)
+    {
+        if (getIngredientName().Equals(other.getIngredientName()))
+            return true;
+        return false;
+    }
 
     public string getIngredientName() {
         return ingredientName;
