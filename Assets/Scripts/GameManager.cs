@@ -28,13 +28,16 @@ public class GameManager : MonoBehaviour {
         initIngredients();
         allDishes = new List<Dish>();
         initDishes();
+        /*
+        foreach (Ingredient ing in allIngredients)
+            Debug.Log(ing.ToString());
 
-        //foreach (Ingredient ing in allIngredients)
-        //    Debug.Log(ing.ToString());
-
-        //foreach (Dish d in allDishes)
-        //    Debug.Log(d.ToString());
-    }
+        foreach (Dish d in allDishes) {
+            Debug.Log(d.getName() + ": ");
+            foreach(Ingredient i in d.getIngredientList())
+                Debug.Log(i.ToString());
+        } */
+    }     
 
 	public void StartGame()
 	{
@@ -94,12 +97,30 @@ public class GameManager : MonoBehaviour {
         {
             string[] dishDetails = line.Split(detailDelim);
             Debug.Log(dishDetails.Length);
-            string[] ingredients = dishDetails[1].Split(ingredientDelim);
+            string[] ingredientNames = dishDetails[1].Split(ingredientDelim);
+            List<Ingredient> ingredients = new List<Ingredient>();
+            foreach (string s in ingredientNames)
+            {
+                ingredients.Add(findIngredientByName(s));
+            }
             allDishes.Add(new Dish(dishDetails[0],
                 ingredients,
                 (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()))
             );
         }
+    }
+
+    public Ingredient findIngredientByName(string name)
+    {
+        foreach (Ingredient i in allIngredients)
+        {
+            if (i.getIngredientName().Equals(name))
+                return i;
+        }
+        throw new Exception("\"" + name + "\" was listed as an ingredient for a recipe, " +
+            "but was not found as a registered ingredient.\n" + 
+            "Try checking that for typos, " + 
+            "or try adding this ingredient to your text file listing ingredients.");
     }
 
     public List<Ingredient> getAllIngredients()
