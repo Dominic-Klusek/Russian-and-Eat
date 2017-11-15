@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour {
 
 	public void StartGame()
 	{
-		SceneManager.LoadScene("Scene1");
-		Debug.Log ("Loaded scene1.");
+		SceneManager.LoadScene("CharacterCreation");
+		Debug.Log ("Loaded Character Creation.");
 	}
 
 	public void LoadCredits()
