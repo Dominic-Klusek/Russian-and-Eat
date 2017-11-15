@@ -20,8 +20,12 @@ public class Character : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Debug.Log(genericDish.getCookingStatus());
-	}
-		
+        string ingredients = "";
+        foreach (Ingredient i in genericDish.getIngredientArray())
+            ingredients += i.getIngredientName() + ", ";
+        Debug.Log(ingredients);
+    }
+
     public void bakeDish()
     {
         genericDish.setCookingStatus(Dish.CookingStatus.BAKED);
@@ -40,5 +44,10 @@ public class Character : MonoBehaviour {
     public void fryDish()
     {
         genericDish.setCookingStatus(Dish.CookingStatus.FRIED);
+    }
+
+    public void addIngredientToDish(Ingredient ingredient)
+    {
+        genericDish.addIngredient(ingredient);
     }
 }
