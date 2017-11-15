@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class FridgeUI : MonoBehaviour {
+    public int ingredientButtonsSpacing = 30;
     private List<Ingredient> ingredientList;
     public GameObject ingredientButtonPrefab;
 
@@ -17,10 +18,13 @@ public class FridgeUI : MonoBehaviour {
             GameObject button = Instantiate(ingredientButtonPrefab) as GameObject;
 
             // makes the button a child of the scroll container
-            button.transform.parent = scrollContentContainer.transform;
-            button.transform.position = scrollContentContainer.transform.position;
-            button.transform.position = new Vector3(scrollContentContainer.transform.position.x, 
-                scrollContentContainer.transform.position.y - 30 * (i + 1), 0);
+            // false makes its transform local to the new parent
+            button.transform.SetParent(scrollContentContainer.transform, false);
+            button.transform.Translate(0, -ingredientButtonsSpacing * i, 0);
+            button.AddComponent(typeof(Ingredient));
+            Ingredient buttonIngredient = button.GetComponent<Ingredient>();
+            buttonIngredient = ingredientList[i];
+            Debug.Log(buttonIngredient.ToString());
         }
     }
 	
