@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredient : MonoBehaviour {
+public class Ingredient {
     public Ingredient(string ingredientName, string transliteration, string russianName) {
         this.ingredientName = ingredientName;
         this.transliteration = transliteration;
