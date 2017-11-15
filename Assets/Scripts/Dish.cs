@@ -76,6 +76,14 @@ public class Dish {
         this.cookingStatus = cookingStatus;
     }
 
+    public void addIngredient(Ingredient ingredient)
+    {
+        foreach (Ingredient i in ingredients)
+            if (i.Equals(ingredient))
+                return;
+        ingredients.Add(ingredient);
+    }
+
     private string name;
     private List<Ingredient> ingredients;
     private CookingStatus cookingStatus;
