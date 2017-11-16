@@ -23,8 +23,9 @@ public class Ingredient {
                this.russianName;
     }
 
-    public bool Equals(Ingredient other)
+    public override bool Equals(object obj)
     {
+        Ingredient other = obj as Ingredient;
         if (getIngredientName().Equals(other.getIngredientName()))
             return true;
         return false;
