@@ -37,6 +37,6 @@ public class FridgeUI : MonoBehaviour {
 
 	public void exitClick()
 	{
-		Destroy(GameObject.Find("FridgeUI(Clone)"));
+		Destroy(gameObject);
 	}
 }
