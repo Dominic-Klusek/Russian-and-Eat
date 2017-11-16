@@ -47,8 +47,11 @@ public class Dish {
         if (this.cookingStatus.Equals(other.cookingStatus))
             return false;
 
+        List<Ingredient> othersIngredients = other.getIngredientList();
+        othersIngredients.Sort();
+
         for (int i = 0; i < ingredients.Count; i++)
-            if (this.ingredients[i].Equals(other.ingredients[i]))
+            if (this.ingredients[i].Equals(othersIngredients[i]))
                 return false;
         
         return true;
