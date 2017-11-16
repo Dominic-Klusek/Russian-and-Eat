@@ -26,9 +26,18 @@ public class Ingredient {
     public override bool Equals(object obj)
     {
         Ingredient other = obj as Ingredient;
-        if (getIngredientName().Equals(other.getIngredientName()))
-            return true;
-        return false;
+        return ingredientName.Equals(other.ingredientName) &&
+            transliteration.Equals(other.transliteration) &&
+            russianName.Equals(other.russianName);
+    }
+
+    public override int GetHashCode()
+    {
+        int hash = 17;
+        hash = hash * 23 + ingredientName.GetHashCode();
+        hash = hash * 23 + transliteration.GetHashCode();
+        hash = hash * 23 + russianName.GetHashCode();
+        return hash;
     }
 
     public string getIngredientName() {
