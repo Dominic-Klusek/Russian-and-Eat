@@ -12,7 +12,6 @@ public class FridgeUI : MonoBehaviour {
     void Start () {
         ingredientList = FindObjectOfType<GameManager>().getAllIngredients();
         GameObject scrollContentContainer = GameObject.Find("Content");
-        Button [] buttons = scrollContentContainer.GetComponentsInChildren<Button>();
         for (int i = 0; i < ingredientList.Count; i++)
         {
             GameObject button = Instantiate(ingredientButtonPrefab) as GameObject;
