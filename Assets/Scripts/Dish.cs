@@ -42,17 +42,19 @@ public class Dish {
     public override bool Equals(object obj)
     {
         Dish other = obj as Dish;
-        if (this.ingredients.Count.Equals(other.ingredients.Count))
+        if (!this.ingredients.Count.Equals(other.ingredients.Count))
             return false;
-        if (this.cookingStatus.Equals(other.cookingStatus))
+        if (!this.cookingStatus.Equals(other.cookingStatus))
             return false;
 
-        List<Ingredient> othersIngredients = other.getIngredientList();
-        othersIngredients.Sort();
+        List<Ingredient> sortedIngredients = ingredients;
+        sortedIngredients.Sort();
 
         for (int i = 0; i < ingredients.Count; i++)
-            if (this.ingredients[i].Equals(othersIngredients[i]))
+        {
+            if (!this.ingredients[i].Equals(sortedIngredients[i]))
                 return false;
+        }
         
         return true;
     }
