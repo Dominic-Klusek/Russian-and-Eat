@@ -24,7 +24,10 @@ public class FridgeUI : MonoBehaviour {
             Ingredient buttonIngredient = ingredientList[i];
 
             Button buttonElement = button.GetComponent<Button>();
-            buttonElement.GetComponentInChildren<Text>().text = buttonIngredient.ToString();
+            buttonElement.GetComponentInChildren<Text>().text = 
+                buttonIngredient.getTransliteration() + "\t\t\t" + 
+                buttonIngredient.getRussianName();
+
             Character player = GameObject.FindObjectOfType<Character>();
             buttonElement.onClick.AddListener(delegate { player.addIngredientToDish(buttonIngredient); });
         }
