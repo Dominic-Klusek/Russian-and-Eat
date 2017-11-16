@@ -73,11 +73,16 @@ public class GameManager : MonoBehaviour {
 
     private void initIngredients()
     {
+        char commentMarker = '#';
         char detailDelim = '\t';
         char lineDelim = '\n';
         string[] fileLines = ingredientsFile.text.Split(lineDelim);
         foreach (string line in fileLines)
         {
+            // if the first char is the same as the commentMarker, 
+            // skip all this and go to next iteration of the loop.
+            if (line[0] == commentMarker)
+                continue;
             string[] ingredientDetails = line.Split(detailDelim);
             allIngredients.Add(new Ingredient(ingredientDetails[0],
                 ingredientDetails[1],
