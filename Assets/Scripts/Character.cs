@@ -19,11 +19,6 @@ public class Character : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(genericDish.getCookingStatus());
-        string ingredients = "";
-        foreach (Ingredient i in genericDish.getIngredientArray())
-            ingredients += i.getIngredientName() + ", ";
-        Debug.Log(ingredients);
     }
 
     public void bakeDish()
@@ -49,5 +44,15 @@ public class Character : MonoBehaviour {
     public void addIngredientToDish(Ingredient ingredient)
     {
         genericDish.addIngredient(ingredient);
+    }
+
+    public void submitCreatedDishToMatchOrderedDish(Dish orderedDish)
+    {
+        Debug.Log("Player's dish: " + genericDish.ToString());
+        Debug.Log("Expected dish: " + orderedDish.ToString());
+        bool dishesMatch = genericDish.Equals(orderedDish);
+        string outp = dishesMatch ? "Requested dish successfully created!" : "Requested dish made incorrectly!";
+        Debug.Log(outp);
+        genericDish = Dish.getEmptyDish();
     }
 }
