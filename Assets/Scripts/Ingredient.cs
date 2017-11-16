@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class Ingredient {
+public class Ingredient : IComparable<Ingredient> {
     public Ingredient(string ingredientName, string transliteration, string russianName) {
         this.ingredientName = ingredientName;
         this.transliteration = transliteration;
@@ -38,6 +39,11 @@ public class Ingredient {
         hash = hash * 23 + transliteration.GetHashCode();
         hash = hash * 23 + russianName.GetHashCode();
         return hash;
+    }
+
+    public int CompareTo(Ingredient other)
+    {
+        return ingredientName.CompareTo(other.ingredientName);
     }
 
     public string getIngredientName() {
