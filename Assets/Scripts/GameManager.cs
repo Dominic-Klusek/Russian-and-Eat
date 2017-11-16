@@ -31,12 +31,10 @@ public class GameManager : MonoBehaviour {
         /*
         foreach (Ingredient ing in allIngredients)
             Debug.Log(ing.ToString());
-
-        foreach (Dish d in allDishes) {
-            Debug.Log(d.getName() + ": ");
-            foreach(Ingredient i in d.getIngredientList())
-                Debug.Log(i.ToString());
-        } */
+         */
+        foreach (Dish d in allDishes)
+            Debug.Log(d.ToString());
+            
     }     
 
 	public void StartGame()
@@ -96,13 +94,14 @@ public class GameManager : MonoBehaviour {
         foreach (string line in fileLines)
         {
             string[] dishDetails = line.Split(detailDelim);
-            Debug.Log(dishDetails.Length);
             string[] ingredientNames = dishDetails[1].Split(ingredientDelim);
+
             List<Ingredient> ingredients = new List<Ingredient>();
             foreach (string s in ingredientNames)
             {
                 ingredients.Add(findIngredientByName(s));
             }
+            ingredients.Sort();
             allDishes.Add(new Dish(dishDetails[0],
                 ingredients,
                 (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()))
