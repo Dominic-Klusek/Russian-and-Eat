@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
 	public bool finishedMovement = true;
     private Dish genericDish;
+    private GameObject dishStatus;
 
 	// Use this for initialization
 	void Start () {
@@ -15,10 +17,12 @@ public class Character : MonoBehaviour {
 			animator = this.GetComponent<Animator>();
 			animator.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("AnimatorControllers/chef_female", typeof(RuntimeAnimatorController )));
 		}
+        dishStatus = GameObject.Find("PlayerDishStatus");
 	}
 
 	// Update is called once per frame
 	void Update () {
+        //dishStatus.GetComponentInChildren<Text>().text = genericDish.ToString(); ;
     }
 
     public void bakeDish()
@@ -46,7 +50,7 @@ public class Character : MonoBehaviour {
         genericDish.addIngredient(ingredient);
     }
 
-    public void submitCreatedDishToMatchOrderedDish(Dish orderedDish)
+    public bool submitCreatedDishToMatchOrderedDish(Dish orderedDish)
     {
         Debug.Log("Player's dish: " + genericDish.ToString());
         Debug.Log("Expected dish: " + orderedDish.ToString());
@@ -54,5 +58,6 @@ public class Character : MonoBehaviour {
         string outp = dishesMatch ? "Requested dish successfully created!" : "Requested dish made incorrectly!";
         Debug.Log(outp);
         genericDish = Dish.getEmptyDish();
+        return dishesMatch;
     }
 }
