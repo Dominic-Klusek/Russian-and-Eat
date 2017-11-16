@@ -39,6 +39,29 @@ public class Dish {
         return ret;
     }
 
+    public override bool Equals(object obj)
+    {
+        Dish other = obj as Dish;
+        if (this.ingredients.Count.Equals(other.ingredients.Count))
+            return false;
+        if (this.cookingStatus.Equals(other.cookingStatus))
+            return false;
+
+        for (int i = 0; i < ingredients.Count; i++)
+            if (this.ingredients[i].Equals(other.ingredients[i]))
+                return false;
+        
+        return true;
+    }
+
+    public override int GetHashCode()
+    {
+        int hash = 17;
+        hash = hash * 23 + ingredients.GetHashCode();
+        hash = hash * 23 + cookingStatus.GetHashCode();
+        return hash;
+    }
+
     public static Dish getEmptyDish()
     {
         return new Dish("Unfinished Dish", new List<Ingredient>(), CookingStatus.RAW);
