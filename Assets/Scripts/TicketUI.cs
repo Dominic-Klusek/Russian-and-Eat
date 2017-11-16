@@ -30,7 +30,13 @@ public class TicketUI : MonoBehaviour
             Button buttonElement = button.GetComponent<Button>();
             buttonElement.GetComponentInChildren<Text>().text = buttonDish.ToString();
             Character player = GameObject.FindObjectOfType<Character>();
-            buttonElement.onClick.AddListener(delegate { player.submitCreatedDishToMatchOrderedDish(buttonDish); });
+            buttonElement.onClick.AddListener(
+                delegate {
+                    if (player.submitCreatedDishToMatchOrderedDish(buttonDish))
+                        StartCoroutine(indicateCorrectDishWasMade(buttonElement));
+                    else
+                        StartCoroutine(indicateIncorrectDishWasMade(buttonElement));
+                });
         }
     }
 
@@ -38,6 +44,20 @@ public class TicketUI : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private IEnumerator indicateCorrectDishWasMade(Button button)
+    {
+        button.image.color = Color.green;
+        yield return new WaitForSeconds(1);
+        button.image.color = Color.white;
+    }
+
+    private IEnumerator indicateIncorrectDishWasMade(Button button)
+    {
+        button.image.color = Color.red;
+        yield return new WaitForSeconds(1);
+        button.image.color = Color.white;
     }
 
     public void exitClick()
