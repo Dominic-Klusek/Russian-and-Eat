@@ -6,6 +6,7 @@ public class Stove : MonoBehaviour {
 	GameObject ovenTop;
 	GameObject ovenBottom;
 	public Canvas ovenUI;
+    public GameObject[] floorTiles;
 
 	// Use this for initialization
 	void Start () {
@@ -23,14 +24,14 @@ public class Stove : MonoBehaviour {
 	{
 		ovenTop.GetComponent<SpriteRenderer>().color = new Color(0,0,0, 0.5f);
 		ovenBottom.GetComponent<SpriteRenderer>().color = new Color(0,0,0, 0.5f);
-	}
+    }
 
 	//when mouse moves from collider, change color of child sprite
 	void OnMouseExit()
 	{
 		ovenTop.GetComponent<SpriteRenderer>().color = new Color(1,1,1, 1f);
 		ovenBottom.GetComponent<SpriteRenderer>().color = new Color(1,1,1, 1f);
-	}
+    }
 
 	//called on when click on collider
 	void OnMouseDown()
@@ -38,6 +39,12 @@ public class Stove : MonoBehaviour {
         //prevent multiple instances of popup UIs from existing
         if (GameObject.FindGameObjectWithTag("Popup UI") == null)
             Instantiate(ovenUI);//create instance of oven ui
+
+        floorTiles = GameObject.FindGameObjectsWithTag("Floor");
+        foreach (GameObject FloorTile in floorTiles)
+        {
+            FloorTile.GetComponent<Move>().interactable = false;
+        }
     }
 
 }

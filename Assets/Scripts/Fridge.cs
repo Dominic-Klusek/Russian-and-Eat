@@ -7,9 +7,10 @@ public class Fridge : MonoBehaviour {
 	GameObject fridgeTop;
 	GameObject fridgeBottom;
 	public Canvas fridgeUI;
+    public GameObject[] floorTiles;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		fridgeTop = GameObject.Find ("FridgeTop");
 		fridgeBottom = GameObject.Find ("FridgeBottom");
         fridgeUI.tag = "Popup UI";
@@ -39,6 +40,11 @@ public class Fridge : MonoBehaviour {
         //prevent multiple instances of popup UIs from existing
         if (GameObject.FindGameObjectWithTag("Popup UI") == null)
 			Instantiate (fridgeUI);//create instance of oven ui
-	}
 
+        floorTiles = GameObject.FindGameObjectsWithTag("Floor");
+        foreach (GameObject FloorTile in floorTiles)
+        {
+            FloorTile.GetComponent<Move>().interactable = false;
+        }
+    }
 }

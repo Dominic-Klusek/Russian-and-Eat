@@ -8,9 +8,10 @@ public class OvenUI : MonoBehaviour {
     Button fry;
     Button boil;
     Button bake;
+    public GameObject[] floorTiles;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         player = FindObjectOfType<Character>();
 
         fry = GameObject.Find("FryButton").GetComponent<Button>();
@@ -30,6 +31,12 @@ public class OvenUI : MonoBehaviour {
 
 	public void exitClick()
 	{
+        floorTiles = GameObject.FindGameObjectsWithTag("Floor");
+        foreach (GameObject FloorTile in floorTiles)
+        {
+            FloorTile.GetComponent<Move>().interactable = true;
+        }
+
         Destroy(gameObject);
 	}
 }

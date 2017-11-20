@@ -7,6 +7,7 @@ public class FridgeUI : MonoBehaviour {
     public int ingredientButtonsSpacing = 30;
     private List<Ingredient> ingredientList;
     public GameObject ingredientButtonPrefab;
+    public GameObject[] floorTiles;
 
     // Use this for initialization
     void Start () {
@@ -40,6 +41,12 @@ public class FridgeUI : MonoBehaviour {
 
 	public void exitClick()
 	{
-		Destroy(gameObject);
+        floorTiles = GameObject.FindGameObjectsWithTag("Floor");
+        foreach (GameObject FloorTile in floorTiles)
+        {
+            FloorTile.GetComponent<Move>().interactable = true;
+        }
+
+        Destroy(gameObject);
 	}
 }

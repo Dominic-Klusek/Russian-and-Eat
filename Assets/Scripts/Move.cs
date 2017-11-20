@@ -5,6 +5,7 @@ using UnityEngine;
 public class Move : MonoBehaviour {
 
 	public Character character;//reference to character script
+    public bool interactable = true;
 	Rigidbody2D bodyCharacter;//reference to character's Rigidbody2D
 	Transform positionCharacter;//reference to character's Transform
 	Animator animatorCharacter;//reference to character's Animator Controller
@@ -29,99 +30,128 @@ public class Move : MonoBehaviour {
 	//when mouse hovers over collider, change color of child sprite
 	void OnMouseEnter()
 	{
-		mousePlace.color = new Color(0,0,0, 0.5f);
+        if (interactable == true)
+        {
+            mousePlace.color = new Color(0, 0, 0, 0.5f);
+        }
 
 	}
 
 	//when mouse moves from collider, change color of child sprite
 	void OnMouseExit()
 	{
-		mousePlace.color = new Color(1,1,1, 1f);
+        if (interactable == true)
+        {
+            mousePlace.color = new Color(1, 1, 1, 1f);
+        }
 	}
 
 	//called on when click on collider
 	void OnMouseDown()
 	{
-		bool leftClick = Input.GetMouseButtonDown (0);
-		//if we left clicked, and we are not moving
-		if (leftClick && character.finishedMovement) {
-			v = Camera.main.ScreenToWorldPoint (Input.mousePosition);//function to get input from mousecursor, and turn it into a Vector3
+        if (interactable == true)
+        {
+            bool leftClick = Input.GetMouseButtonDown(0);
+            //if we left clicked, and we are not moving
+            if (leftClick && character.finishedMovement)
+            {
+                v = Camera.main.ScreenToWorldPoint(Input.mousePosition);//function to get input from mousecursor, and turn it into a Vector3
 
-			fixedCoordinates ();//fix coordinates from mouse click
+                fixedCoordinates();//fix coordinates from mouse click
 
-			StartCoroutine("MoveX");//coroutine to move in horizontal axis
+                StartCoroutine("MoveX");//coroutine to move in horizontal axis
 
-			StartCoroutine("MoveY");//coroutine to move in the vertical axis
-		}
+                StartCoroutine("MoveY");//coroutine to move in the vertical axis
+            }
+        }
 	}
 
 	//check if coordinates of positionCharacter == Vector3 v
 	void checkMovement()
 	{
-		//if coordinates are equal, movement is finished set finishedMovement to true, otherwise set finishedmovement to false
-		if (positionCharacter.position.x == v.x && positionCharacter.position.y == v.y) {
-			character.finishedMovement = true;
-			StopCoroutine ("MoveX");
-			StopCoroutine ("MoveY");
-		} else {
-			character.finishedMovement = false;
-		}
+        if (interactable == true)
+        {
+            //if coordinates are equal, movement is finished set finishedMovement to true, otherwise set finishedmovement to false
+            if (positionCharacter.position.x == v.x && positionCharacter.position.y == v.y)
+            {
+                character.finishedMovement = true;
+                StopCoroutine("MoveX");
+                StopCoroutine("MoveY");
+            }
+            else
+            {
+                character.finishedMovement = false;
+            }
+        }
 	}
 
 	//coroutine that changes x position of character by 1 until it is equal to where player clicked
 	IEnumerator MoveX()
-	{ 	
-		//while loop doesn't work, need to figure out why
-		//while(positionCharacter.position.x != v.x)
-		//while the clicked position doesn't equal the object's position stay in loop
-		while (positionCharacter.position.x != v.x) {
-			if (positionCharacter.position.x > v.x) {
-				animatorCharacter.SetBool ("WalkingForward", false);//if these are true, set them to false to prevent errors
-				animatorCharacter.SetBool ("WalkingBackward", false);
-				animatorCharacter.SetBool ("WalkingLeft", true);//set appropriate horizontal bool
-				animatorCharacter.SetBool ("WalkingRight", false);
-				bodyCharacter.MovePosition (new Vector2 (positionCharacter.position.x - 1, positionCharacter.position.y));//decrement x position
-			}
-			else if (positionCharacter.position.x < v.x) {
-				animatorCharacter.SetBool ("WalkingForward", false);//if these are true, set them to false to prevent errors
-				animatorCharacter.SetBool ("WalkingBackward", false);
-				animatorCharacter.SetBool ("WalkingLeft", false);//set appropriate horizontal bool
-				animatorCharacter.SetBool ("WalkingRight", true);
-				bodyCharacter.MovePosition (new Vector2 (positionCharacter.position.x + 1, positionCharacter.position.y));//increment x position
-			}
+	{
+        if (interactable == true)
+        {
+            //while loop doesn't work, need to figure out why
+            //while(positionCharacter.position.x != v.x)
+            //while the clicked position doesn't equal the object's position stay in loop
+            while (positionCharacter.position.x != v.x)
+            {
+                if (positionCharacter.position.x > v.x)
+                {
+                    animatorCharacter.SetBool("WalkingForward", false);//if these are true, set them to false to prevent errors
+                    animatorCharacter.SetBool("WalkingBackward", false);
+                    animatorCharacter.SetBool("WalkingLeft", true);//set appropriate horizontal bool
+                    animatorCharacter.SetBool("WalkingRight", false);
+                    bodyCharacter.MovePosition(new Vector2(positionCharacter.position.x - 1, positionCharacter.position.y));//decrement x position
+                }
+                else if (positionCharacter.position.x < v.x)
+                {
+                    animatorCharacter.SetBool("WalkingForward", false);//if these are true, set them to false to prevent errors
+                    animatorCharacter.SetBool("WalkingBackward", false);
+                    animatorCharacter.SetBool("WalkingLeft", false);//set appropriate horizontal bool
+                    animatorCharacter.SetBool("WalkingRight", true);
+                    bodyCharacter.MovePosition(new Vector2(positionCharacter.position.x + 1, positionCharacter.position.y));//increment x position
+                }
 
-			yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
-		}
-		checkMovement ();//check if movement is finished
-		animatorCharacter.SetBool ("WalkingLeft", false);
-		animatorCharacter.SetBool ("WalkingRight", false);
-		yield return null; //Done
+                yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
+            }
+            checkMovement();//check if movement is finished
+            animatorCharacter.SetBool("WalkingLeft", false);
+            animatorCharacter.SetBool("WalkingRight", false);
+            yield return null; //Done
+        }
 	}
 
 	//coroutine that changes y position of character by 1 until it is equal to where player clicked
 	IEnumerator MoveY()
 	{
-		//while the clicked position doesn't equal the object's position stay in loop
-		while (positionCharacter.position.y != v.y) {
-			if (positionCharacter.position.y > v.y) {
-				animatorCharacter.SetBool ("WalkingForward", true);//set appropriate vertical bool
-				animatorCharacter.SetBool ("WalkingBackward", false);
-				animatorCharacter.SetBool ("WalkingLeft", false);//if these are true, set them to false
-				animatorCharacter.SetBool ("WalkingRight", false);
-				bodyCharacter.MovePosition (new Vector2 (positionCharacter.position.x, positionCharacter.position.y - 1));//decrement y position
-			} else if (positionCharacter.position.y < v.y) {
-				animatorCharacter.SetBool ("WalkingForward", false);//set appropriate vertical bool
-				animatorCharacter.SetBool ("WalkingBackward", true);
-				animatorCharacter.SetBool ("WalkingLeft", false);//if these are true, set them to false
-				animatorCharacter.SetBool ("WalkingRight", false);
-				bodyCharacter.MovePosition (new Vector2 (positionCharacter.position.x, positionCharacter.position.y + 1));//increment y position
-			}
-			yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
-		}
-		checkMovement ();//check if movement is finished
-		animatorCharacter.SetBool ("WalkingForward", false);
-		animatorCharacter.SetBool ("WalkingBackward", false);
-		yield return null; //Done
+        if (interactable == true)
+        {
+            //while the clicked position doesn't equal the object's position stay in loop
+            while (positionCharacter.position.y != v.y)
+            {
+                if (positionCharacter.position.y > v.y)
+                {
+                    animatorCharacter.SetBool("WalkingForward", true);//set appropriate vertical bool
+                    animatorCharacter.SetBool("WalkingBackward", false);
+                    animatorCharacter.SetBool("WalkingLeft", false);//if these are true, set them to false
+                    animatorCharacter.SetBool("WalkingRight", false);
+                    bodyCharacter.MovePosition(new Vector2(positionCharacter.position.x, positionCharacter.position.y - 1));//decrement y position
+                }
+                else if (positionCharacter.position.y < v.y)
+                {
+                    animatorCharacter.SetBool("WalkingForward", false);//set appropriate vertical bool
+                    animatorCharacter.SetBool("WalkingBackward", true);
+                    animatorCharacter.SetBool("WalkingLeft", false);//if these are true, set them to false
+                    animatorCharacter.SetBool("WalkingRight", false);
+                    bodyCharacter.MovePosition(new Vector2(positionCharacter.position.x, positionCharacter.position.y + 1));//increment y position
+                }
+                yield return new WaitForSeconds(0.1f);//delay next movement for 0.1 seconds
+            }
+            checkMovement();//check if movement is finished
+            animatorCharacter.SetBool("WalkingForward", false);
+            animatorCharacter.SetBool("WalkingBackward", false);
+            yield return null; //Done
+        }
 	}
 
 	//function fixes vector so that it correlates correctly to the collider tiles, then return fixed vector
