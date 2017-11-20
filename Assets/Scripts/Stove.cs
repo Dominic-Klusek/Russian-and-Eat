@@ -40,6 +40,7 @@ public class Stove : MonoBehaviour {
 	void OnMouseDown()
 	{
         floorTileMove = GameObject.Find("FloorTile (7)");
+        floorTileMove.GetComponent<Move>().clickedOven = true;
         floorTileMove.GetComponent<Move>().OnMouseDown();
         character = GameObject.Find("Character");
 

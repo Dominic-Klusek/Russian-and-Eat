@@ -6,12 +6,12 @@ public class Move : MonoBehaviour
 {
     public Character character;//reference to character script
     public bool interactable = true;
+    public bool clickedFridge = false;
+    public bool clickedOven = false;
     
     Rigidbody2D bodyCharacter;//reference to character's Rigidbody2D
     Transform positionCharacter;//reference to character's Transform
     Animator animatorCharacter;//reference to character's Animator Controller
-
-
 
     SpriteRenderer mousePlace;
     Vector3 v;//static Vector3 variable that is used very ofthen in script
@@ -59,7 +59,16 @@ public class Move : MonoBehaviour
             //if we left clicked, and we are not moving
             if (leftClick && character.finishedMovement)
             {
-                v = Camera.main.ScreenToWorldPoint(Input.mousePosition);//function to get input from mousecursor, and turn it into a Vector3
+                if (clickedFridge == true)
+                {
+                    v.Set(2, 1, 0);
+                }
+                else if (clickedOven == true)
+                {
+                    v.Set(-2, 1, 0);
+                }
+                else
+                    v = Camera.main.ScreenToWorldPoint(Input.mousePosition);//function to get input from mousecursor, and turn it into a Vector3
 
                 fixedCoordinates();//fix coordinates from mouse click
 
@@ -68,6 +77,11 @@ public class Move : MonoBehaviour
                 StartCoroutine("MoveY");//coroutine to move in the vertical axis
             }
         }
+    }
+
+    public void MoveToBottom()
+    {
+        
     }
 
     //check if coordinates of positionCharacter == Vector3 v

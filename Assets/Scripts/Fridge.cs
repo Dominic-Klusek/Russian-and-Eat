@@ -41,6 +41,7 @@ public class Fridge : MonoBehaviour {
 	void OnMouseDown()
 	{
         floorTileMove = GameObject.Find("FloorTile (2)");
+        floorTileMove.GetComponent<Move>().clickedFridge = true;
         floorTileMove.GetComponent<Move>().OnMouseDown();
         character = GameObject.Find("Character");
 
