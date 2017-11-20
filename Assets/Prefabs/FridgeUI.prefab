@@ -693,6 +693,7 @@ MonoBehaviour:
   ingredientButtonsSpacing: 30
   ingredientButtonPrefab: {fileID: 1652942563159508, guid: 6905104a21aeea446953168e1236c5e7,
     type: 2}
+  floorTiles: []
 --- !u!114 &114984165315903138
 MonoBehaviour:
   m_ObjectHideFlags: 1

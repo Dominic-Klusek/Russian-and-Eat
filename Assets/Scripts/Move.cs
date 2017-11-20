@@ -2,53 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour {
-
-	public Character character;//reference to character script
+public class Move : MonoBehaviour
+{
+    public Character character;//reference to character script
     public bool interactable = true;
-	Rigidbody2D bodyCharacter;//reference to character's Rigidbody2D
-	Transform positionCharacter;//reference to character's Transform
-	Animator animatorCharacter;//reference to character's Animator Controller
+    
+    Rigidbody2D bodyCharacter;//reference to character's Rigidbody2D
+    Transform positionCharacter;//reference to character's Transform
+    Animator animatorCharacter;//reference to character's Animator Controller
 
-	SpriteRenderer mousePlace;
-	Vector3 v;//static Vector3 variable that is used very ofthen in script
 
-	// Use this for initialization
-	void Start () {
-		bodyCharacter = character.GetComponent<Rigidbody2D> ();//reference to character Rigidbody2D
-		positionCharacter = character.GetComponent<Transform> ();//reference to character Transform
-		mousePlace = GetComponent<SpriteRenderer> ();
-		animatorCharacter = character.GetComponent<Animator> ();
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-	}
 
-		
+    SpriteRenderer mousePlace;
+    Vector3 v;//static Vector3 variable that is used very ofthen in script
 
-	//when mouse hovers over collider, change color of child sprite
-	void OnMouseEnter()
-	{
+    // Use this for initialization
+    void Start()
+    {
+        bodyCharacter = character.GetComponent<Rigidbody2D>();//reference to character Rigidbody2D
+        positionCharacter = character.GetComponent<Transform>();//reference to character Transform
+        mousePlace = GetComponent<SpriteRenderer>();
+        animatorCharacter = character.GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+    }
+
+
+
+    //when mouse hovers over collider, change color of child sprite
+    void OnMouseEnter()
+    {
         if (interactable == true)
         {
             mousePlace.color = new Color(0, 0, 0, 0.5f);
         }
+    }
 
-	}
-
-	//when mouse moves from collider, change color of child sprite
-	void OnMouseExit()
-	{
+    //when mouse moves from collider, change color of child sprite
+    void OnMouseExit()
+    {
         if (interactable == true)
         {
             mousePlace.color = new Color(1, 1, 1, 1f);
         }
-	}
+    }
 
-	//called on when click on collider
-	void OnMouseDown()
-	{
+    //called on when click on collider
+    public void OnMouseDown()
+    {
         if (interactable == true)
         {
             bool leftClick = Input.GetMouseButtonDown(0);
@@ -64,11 +68,11 @@ public class Move : MonoBehaviour {
                 StartCoroutine("MoveY");//coroutine to move in the vertical axis
             }
         }
-	}
+    }
 
-	//check if coordinates of positionCharacter == Vector3 v
-	void checkMovement()
-	{
+    //check if coordinates of positionCharacter == Vector3 v
+    void checkMovement()
+    {
         if (interactable == true)
         {
             //if coordinates are equal, movement is finished set finishedMovement to true, otherwise set finishedmovement to false
@@ -83,11 +87,11 @@ public class Move : MonoBehaviour {
                 character.finishedMovement = false;
             }
         }
-	}
+    }
 
-	//coroutine that changes x position of character by 1 until it is equal to where player clicked
-	IEnumerator MoveX()
-	{
+    //coroutine that changes x position of character by 1 until it is equal to where player clicked
+    IEnumerator MoveX()
+    {
         if (interactable == true)
         {
             //while loop doesn't work, need to figure out why
@@ -119,11 +123,11 @@ public class Move : MonoBehaviour {
             animatorCharacter.SetBool("WalkingRight", false);
             yield return null; //Done
         }
-	}
+    }
 
-	//coroutine that changes y position of character by 1 until it is equal to where player clicked
-	IEnumerator MoveY()
-	{
+    //coroutine that changes y position of character by 1 until it is equal to where player clicked
+    IEnumerator MoveY()
+    {
         if (interactable == true)
         {
             //while the clicked position doesn't equal the object's position stay in loop
@@ -152,56 +156,68 @@ public class Move : MonoBehaviour {
             animatorCharacter.SetBool("WalkingBackward", false);
             yield return null; //Done
         }
-	}
+    }
 
-	//function fixes vector so that it correlates correctly to the collider tiles, then return fixed vector
-	void fixedCoordinates()
-	{
-		float nx, ny;
-		//if v.x is negative, we need to treat it differently from when it is positive
-		if (v.x < 0) {
-			//if decimal is greater than or equal to 0.5, we round down
-			if (v.x % 1f < -0.5f) {
-				nx = Mathf.Floor (v.x);
-			}
-			//else round up
-			else {
-				nx = Mathf.Ceil (v.x);
-			}
-		} 
-		else {
-			//if decimal is greater than or equal to 0.5, we round up
-			if ((v.x % 1f) > 0.5f) {
-				nx = Mathf.Ceil (v.x);
-			} 
-			//else round down
-			else {
-				nx = Mathf.Floor (v.x);
-			}
-		}
+    //function fixes vector so that it correlates correctly to the collider tiles, then return fixed vector
+    void fixedCoordinates()
+    {
+        float nx, ny;
+        //if v.x is negative, we need to treat it differently from when it is positive
+        if (v.x < 0)
+        {
+            //if decimal is greater than or equal to 0.5, we round down
+            if (v.x % 1f < -0.5f)
+            {
+                nx = Mathf.Floor(v.x);
+            }
+            //else round up
+            else
+            {
+                nx = Mathf.Ceil(v.x);
+            }
+        }
+        else
+        {
+            //if decimal is greater than or equal to 0.5, we round up
+            if ((v.x % 1f) > 0.5f)
+            {
+                nx = Mathf.Ceil(v.x);
+            }
+            //else round down
+            else
+            {
+                nx = Mathf.Floor(v.x);
+            }
+        }
 
-		//if v.y is negative, we need to treat it differently from when it is positive
-		if (v.y < 0) {
-			//if decimal is greater than or equal to 0.5, we round down
-			if ((v.y % 1f) < -0.5f) {
-				ny = Mathf.Floor (v.y);
-			}
-			//else round up
-			else {
-				ny = Mathf.Ceil (v.y);
-			}
-		} 
-		else {
-			//if decimal is greater than or equal to 0.5, we round up
-			if ((v.y % 1f) > 0.5f) {
-				ny = Mathf.Ceil (v.y);
-			}
-			//else round down
-			else {
-				ny = Mathf.Floor (v.y);
-			}
-		}
+        //if v.y is negative, we need to treat it differently from when it is positive
+        if (v.y < 0)
+        {
+            //if decimal is greater than or equal to 0.5, we round down
+            if ((v.y % 1f) < -0.5f)
+            {
+                ny = Mathf.Floor(v.y);
+            }
+            //else round up
+            else
+            {
+                ny = Mathf.Ceil(v.y);
+            }
+        }
+        else
+        {
+            //if decimal is greater than or equal to 0.5, we round up
+            if ((v.y % 1f) > 0.5f)
+            {
+                ny = Mathf.Ceil(v.y);
+            }
+            //else round down
+            else
+            {
+                ny = Mathf.Floor(v.y);
+            }
+        }
 
-		v = new Vector3 (nx, ny, Mathf.Floor (v.z));//vector to send to move functions
-	}
+        v = new Vector3(nx, ny, Mathf.Floor(v.z));//vector to send to move functions
+    }
 }

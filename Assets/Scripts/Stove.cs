@@ -7,6 +7,9 @@ public class Stove : MonoBehaviour {
 	GameObject ovenBottom;
 	public Canvas ovenUI;
     public GameObject[] floorTiles;
+    public GameObject floorTileMove;
+    public GameObject character;
+    public bool interactable = true;
 
 	// Use this for initialization
 	void Start () {
@@ -22,8 +25,8 @@ public class Stove : MonoBehaviour {
 	//when mouse hovers over collider, change color of child sprite
 	void OnMouseEnter()
 	{
-		ovenTop.GetComponent<SpriteRenderer>().color = new Color(0,0,0, 0.5f);
-		ovenBottom.GetComponent<SpriteRenderer>().color = new Color(0,0,0, 0.5f);
+        ovenTop.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.5f);
+        ovenBottom.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.5f);
     }
 
 	//when mouse moves from collider, change color of child sprite
@@ -36,15 +39,22 @@ public class Stove : MonoBehaviour {
 	//called on when click on collider
 	void OnMouseDown()
 	{
-        //prevent multiple instances of popup UIs from existing
-        if (GameObject.FindGameObjectWithTag("Popup UI") == null)
-            Instantiate(ovenUI);//create instance of oven ui
+        floorTileMove = GameObject.Find("FloorTile (7)");
+        floorTileMove.GetComponent<Move>().OnMouseDown();
+        character = GameObject.Find("Character");
 
-        floorTiles = GameObject.FindGameObjectsWithTag("Floor");
-        foreach (GameObject FloorTile in floorTiles)
+        bool animationDone = character.GetComponent<Character>().finishedMovement;
+        if (animationDone == true)
         {
-            FloorTile.GetComponent<Move>().interactable = false;
+            //prevent multiple instances of popup UIs from existing
+            if (GameObject.FindGameObjectWithTag("Popup UI") == null)
+                Instantiate(ovenUI);//create instance of oven ui
+
+            floorTiles = GameObject.FindGameObjectsWithTag("Floor");
+            foreach (GameObject FloorTile in floorTiles)
+            {
+                FloorTile.GetComponent<Move>().interactable = false;
+            }
         }
     }
-
 }

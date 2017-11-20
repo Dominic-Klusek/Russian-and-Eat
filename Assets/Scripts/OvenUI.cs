@@ -36,7 +36,7 @@ public class OvenUI : MonoBehaviour {
         {
             FloorTile.GetComponent<Move>().interactable = true;
         }
-
+        
         Destroy(gameObject);
 	}
 }
