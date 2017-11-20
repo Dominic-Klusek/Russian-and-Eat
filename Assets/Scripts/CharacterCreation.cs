@@ -8,6 +8,9 @@ public class CharacterCreation : MonoBehaviour {
     public int textSpot = 0;
 	Text dialogue;
 	public Texture btnTexture;
+	public GameObject maleObject;
+	public GameObject femaleObject;
+
 	// Use this for initialization
 	void Start () {
 		dialogue = GetComponent<Text> ();
@@ -29,14 +32,17 @@ public class CharacterCreation : MonoBehaviour {
 			}
 			break;
 		case 1:
-			dialogue.text = "Before we get started I need to know,\nAre you male or female?";
-			if (GUI.Button (new Rect (750, 400, 50, 50), "Boy")) {
-				print ("Boy");
+			displayCharacters ();
+			dialogue.text = "Before we get started I need to know,\nwho would you like to play as?";
+			if (GUI.Button (new Rect (375, 300, 60, 60), "Male")) {
+				hideFemaleCharacter ();
+				print ("Male");
 				game.femaleCharacter = false;
 				textSpot++;
 			}
-			if (GUI.Button (new Rect (750, 460, 50, 50), "Girl")) {
-				print ("Girl");
+			if (GUI.Button (new Rect (550, 300, 60, 60), "Female")) {
+				hideMaleCharacter ();
+				print ("Female");
 				game.femaleCharacter = true;
 				textSpot++;
 			}
@@ -50,6 +56,19 @@ public class CharacterCreation : MonoBehaviour {
 		default:
 			break;
 		}
+	}
+
+	void displayCharacters(){
+		maleObject = GameObject.Find ("chef_male_0");
+		femaleObject = GameObject.Find ("chef_female_0");
+		maleObject.GetComponent<SpriteRenderer>().enabled = true;
+		femaleObject.GetComponent<SpriteRenderer>().enabled = true;
+	}
+	void hideMaleCharacter(){
+		maleObject.GetComponent<SpriteRenderer>().enabled = false;
+	}
+	void hideFemaleCharacter(){
+		femaleObject.GetComponent<SpriteRenderer>().enabled = false;
 	}
 
 	/*void TextChanger(){
