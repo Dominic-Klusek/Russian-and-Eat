@@ -30,8 +30,6 @@ public class Move : MonoBehaviour
     {
     }
 
-
-
     //when mouse hovers over collider, change color of child sprite
     void OnMouseEnter()
     {
@@ -87,8 +85,6 @@ public class Move : MonoBehaviour
     //check if coordinates of positionCharacter == Vector3 v
     void checkMovement()
     {
-        if (interactable == true)
-        {
             //if coordinates are equal, movement is finished set finishedMovement to true, otherwise set finishedmovement to false
             if (positionCharacter.position.x == v.x && positionCharacter.position.y == v.y)
             {
@@ -100,14 +96,11 @@ public class Move : MonoBehaviour
             {
                 character.finishedMovement = false;
             }
-        }
     }
 
     //coroutine that changes x position of character by 1 until it is equal to where player clicked
     IEnumerator MoveX()
     {
-        if (interactable == true)
-        {
             //while loop doesn't work, need to figure out why
             //while(positionCharacter.position.x != v.x)
             //while the clicked position doesn't equal the object's position stay in loop
@@ -136,14 +129,11 @@ public class Move : MonoBehaviour
             animatorCharacter.SetBool("WalkingLeft", false);
             animatorCharacter.SetBool("WalkingRight", false);
             yield return null; //Done
-        }
     }
 
     //coroutine that changes y position of character by 1 until it is equal to where player clicked
     IEnumerator MoveY()
     {
-        if (interactable == true)
-        {
             //while the clicked position doesn't equal the object's position stay in loop
             while (positionCharacter.position.y != v.y)
             {
@@ -169,7 +159,6 @@ public class Move : MonoBehaviour
             animatorCharacter.SetBool("WalkingForward", false);
             animatorCharacter.SetBool("WalkingBackward", false);
             yield return null; //Done
-        }
     }
 
     //function fixes vector so that it correlates correctly to the collider tiles, then return fixed vector

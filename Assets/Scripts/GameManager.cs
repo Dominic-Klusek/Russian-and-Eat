@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
         /*
         foreach (Ingredient ing in allIngredients)
             Debug.Log(ing.ToString());
-         */
+        */
         foreach (Dish d in allDishes)
             Debug.Log(d.ToString());
             
