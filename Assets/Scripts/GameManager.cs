@@ -11,8 +11,14 @@ public class GameManager : MonoBehaviour {
     public TextAsset recipesFile;
 	public bool femaleCharacter = false;
 
+    public string[] namesOfStartingIngredients = { "water", "flour" };
+    public string[] namesOfStartingDishes = { "bread" };
+
     private List<Ingredient> allIngredients;
     private List<Dish> allDishes;
+
+    private List<Ingredient> ingredientsAvailable;
+    private List<Dish> dishesAvailable;
 
     private void Awake()
     {
@@ -28,13 +34,18 @@ public class GameManager : MonoBehaviour {
         initIngredients();
         allDishes = new List<Dish>();
         initDishes();
+
+        ingredientsAvailable = new List<Ingredient>();
+        initIngredientsAvailable();
+        dishesAvailable = new List<Dish>();
+        initDishesAvailable();
         /*
-        foreach (Ingredient ing in allIngredients)
+        foreach (Ingredient ing in ingredientsAvailable)
             Debug.Log(ing.ToString());
-        */
-        foreach (Dish d in allDishes)
+        
+        foreach (Dish d in dishesAvailable)
             Debug.Log(d.ToString());
-            
+            */
     }     
 
 	public void StartGame()
@@ -106,11 +117,31 @@ public class GameManager : MonoBehaviour {
             {
                 ingredients.Add(findIngredientByName(s));
             }
+            // sort to ensure the ingredients of a dish are in the same order whenever made.
+            // this is important for comparing the player's dish's list of ingredients
+            // to a ticket's dish's list of ingredients. 
+            // The player's dish must also be sorted before the comparison is made.
             ingredients.Sort();
             allDishes.Add(new Dish(dishDetails[0],
                 ingredients,
                 (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()))
             );
+        }
+    }
+
+    private void initIngredientsAvailable()
+    {
+        foreach (string ingredientName in namesOfStartingIngredients)
+        {
+            ingredientsAvailable.Add(findIngredientByName(ingredientName));
+        }
+    }
+
+    private void initDishesAvailable()
+    {
+        foreach (string dishName in namesOfStartingDishes)
+        {
+            dishesAvailable.Add(findDishByName(dishName));
         }
     }
 
@@ -121,10 +152,23 @@ public class GameManager : MonoBehaviour {
             if (i.getIngredientName().Equals(name))
                 return i;
         }
-        throw new Exception("\"" + name + "\" was listed as an ingredient for a recipe, " +
+        throw new Exception("\"" + name + "\" was searched for as an existing ingredient, " +
             "but was not found as a registered ingredient.\n" + 
-            "Try checking that for typos, " + 
+            "Try checking for typos, " + 
             "or try adding this ingredient to your text file listing ingredients.");
+    }
+
+    public Dish findDishByName(string name)
+    {
+        foreach (Dish i in allDishes)
+        {
+            if (i.getName().Equals(name))
+                return i;
+        }
+        throw new Exception("\"" + name + "\" was searched for as an existing Dish, " +
+            "but was not found as a registered Dish.\n" +
+            "Try checking for typos, " +
+            "or try adding this Dish to your text file listing recipes.");
     }
 
     public List<Ingredient> getAllIngredients()
