@@ -60,4 +60,9 @@ public class Character : MonoBehaviour {
         genericDish = Dish.getEmptyDish();
         return dishesMatch;
     }
+
+    public void restartDish()
+    {
+        genericDish = Dish.getEmptyDish();
+    }
 }
