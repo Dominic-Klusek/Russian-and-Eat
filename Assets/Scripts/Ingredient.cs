@@ -4,6 +4,13 @@ using UnityEngine;
 using System;
 
 public class Ingredient : IComparable<Ingredient> {
+    public Ingredient(Ingredient copy)
+    {
+        ingredientName =  copy.ingredientName;
+        transliteration = copy.transliteration;
+        russianName = copy.russianName;
+    }
+
     public Ingredient(string ingredientName, string transliteration, string russianName) {
         this.ingredientName = ingredientName;
         this.transliteration = transliteration;
