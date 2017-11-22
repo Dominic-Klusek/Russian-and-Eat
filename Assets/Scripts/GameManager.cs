@@ -180,4 +180,14 @@ public class GameManager : MonoBehaviour {
     {
         return allDishes;
     }
+
+    public List<Ingredient> getIngredientsAvailable()
+    {
+        return ingredientsAvailable;
+    }
+
+    public List<Dish> getDishesAvailable()
+    {
+        return dishesAvailable;
+    }
 }
