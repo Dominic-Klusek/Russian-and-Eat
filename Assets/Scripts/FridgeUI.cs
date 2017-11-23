@@ -23,7 +23,7 @@ public class FridgeUI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        ingredientList = FindObjectOfType<GameManager>().getAllIngredients();
+        ingredientList = FindObjectOfType<GameManager>().getIngredientsAvailable();
         var scrollContentContainer = transform.Find("Scroll View/Viewport/Content");// GameObject.Find("Content");
         for (int i = 0; i < ingredientList.Count; i++)
         {
