@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 224551851753299534}
   - component: {fileID: 222546282177822752}
   - component: {fileID: 114597201222070184}
-  - component: {fileID: 114111927873627746}
+  - component: {fileID: 114854782434015396}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -81,21 +81,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114111927873627746
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1266704349708196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79c21a7564eba43bfb2827d1f2d8cb13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textSpot: 0
-  btnTexture: {fileID: 2800000, guid: 0f06fd53c91afd54a8067da985b2e3d0, type: 3}
-  maleObject: {fileID: 0}
-  femaleObject: {fileID: 0}
 --- !u!114 &114596676418631370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,10 +129,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Welcome to Russian-and-Eat. I''m your guide, Vladimir.
-
-    The goal of this game is to teach you the Russian language and to cook Russian
-    cuisine.'
+  m_Text: Sample Text.
 --- !u!114 &114676912996028090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +163,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Vladimir
+--- !u!114 &114854782434015396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1266704349708196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17287047ad7cda8438c97fb81fb91a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnTexture: {fileID: 2800000, guid: 0f06fd53c91afd54a8067da985b2e3d0, type: 3}
+  maleObject: {fileID: 0}
+  femaleObject: {fileID: 0}
 --- !u!114 &114875013999874862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,7 +300,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 10, y: -300}
-  m_SizeDelta: {x: 543.4, y: 100}
+  m_SizeDelta: {x: 550, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224852317845280524
 RectTransform:
