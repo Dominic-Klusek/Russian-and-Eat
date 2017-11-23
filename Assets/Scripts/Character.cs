@@ -88,6 +88,11 @@ public class Character : MonoBehaviour
         genericDish.addIngredient(ingredient);
     }
 
+    public Dish getCharacterDish()
+    {
+        return genericDish;
+    }
+
     public bool submitCreatedDishToMatchOrderedDish(Dish orderedDish)
     {
         Debug.Log("Player's dish: " + genericDish.ToString());
