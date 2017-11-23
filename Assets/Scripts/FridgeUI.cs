@@ -51,6 +51,11 @@ public class FridgeUI : MonoBehaviour {
 		
 	}
 
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
     public static FridgeUI getInstance()
     {
         return instance;

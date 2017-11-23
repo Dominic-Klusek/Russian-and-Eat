@@ -46,6 +46,11 @@ public class Character : MonoBehaviour
         //dishStatus.GetComponentInChildren<Text>().text = genericDish.ToString(); ;
     }
 
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
     public static Character getInstance()
     {
         return instance;

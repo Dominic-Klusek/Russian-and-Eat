@@ -50,6 +50,11 @@ public class OvenUI : MonoBehaviour {
 		
 	}
 
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
     public static OvenUI getInsance()
     {
         return instance;
@@ -62,7 +67,6 @@ public class OvenUI : MonoBehaviour {
         {
             FloorTile.GetComponent<Move>().interactable = true;
         }
-        
         Destroy(gameObject);
 	}
 }

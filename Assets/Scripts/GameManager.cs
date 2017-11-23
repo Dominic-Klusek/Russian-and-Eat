@@ -49,9 +49,14 @@ public class GameManager : MonoBehaviour {
         foreach (Dish d in dishesAvailable)
             Debug.Log(d.ToString());
             */
-    }     
+    }
 
-	public void StartGame()
+    private void OnDestroy()
+    {
+        instance = bull;
+    }
+
+    public void StartGame()
 	{
 		SceneManager.LoadScene("CharacterCreation");
 		Debug.Log ("Loaded Character Creation.");

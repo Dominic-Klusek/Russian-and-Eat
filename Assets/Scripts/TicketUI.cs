@@ -57,6 +57,11 @@ public class TicketUI : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
     public static TicketUI getInstance()
     {
         return instance;
