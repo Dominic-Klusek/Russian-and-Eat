@@ -3,30 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour {
-	public bool finishedMovement = true;
+public class Character : MonoBehaviour
+{
+    public bool finishedMovement = true;
+    public AudioClip bakeSound;
+    public AudioClip boilSound;
+    public AudioClip frySound;
+
+
     private Dish genericDish;
     private GameObject dishStatus;
+    private AudioSource audioSource;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         genericDish = Dish.getEmptyDish();
         GameManager game = Object.FindObjectOfType<GameManager>();
-		if (game.femaleCharacter == true){
-			Animator animator;
-			animator = this.GetComponent<Animator>();
-			animator.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("AnimatorControllers/chef_female", typeof(RuntimeAnimatorController )));
-		}
+        if (game.femaleCharacter == true)
+        {
+            Animator animator;
+            animator = this.GetComponent<Animator>();
+            animator.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("AnimatorControllers/chef_female", typeof(RuntimeAnimatorController)));
+        }
         dishStatus = GameObject.Find("PlayerDishStatus");
-	}
+        audioSource = GetComponent<AudioSource>();
+    }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         //dishStatus.GetComponentInChildren<Text>().text = genericDish.ToString(); ;
     }
 
     public void bakeDish()
     {
+        audioSource.clip = bakeSound;
+        audioSource.Play();
         genericDish.setCookingStatus(Dish.CookingStatus.BAKED);
     }
 
@@ -37,11 +50,21 @@ public class Character : MonoBehaviour {
 
     public void boilDish()
     {
+        if (boilSound != null)
+        {
+            audioSource.clip = boilSound;
+            audioSource.Play();
+        }
         genericDish.setCookingStatus(Dish.CookingStatus.BOILED);
     }
 
     public void fryDish()
     {
+        if (frySound != null)
+        {
+            audioSource.clip = frySound;
+            audioSource.Play();
+        }
         genericDish.setCookingStatus(Dish.CookingStatus.FRIED);
     }
 
