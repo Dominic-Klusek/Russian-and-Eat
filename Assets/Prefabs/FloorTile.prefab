@@ -78,7 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d37ec748e70406bbeb1d38b2287efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  character: {fileID: 114252883278395916, guid: b3e96bab62e6b4ac19f611d57783e000,
+    type: 2}
+  interactable: 1
+  clickedFridge: 0
+  clickedOven: 0
 --- !u!212 &212626579154976238
 SpriteRenderer:
   m_ObjectHideFlags: 1
