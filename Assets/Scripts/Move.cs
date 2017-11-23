@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public Character character;//reference to character script
+    private Character character;//reference to character script
     public bool interactable = true;
     public bool clickedFridge = false;
     public bool clickedOven = false;
@@ -19,6 +19,7 @@ public class Move : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        character = Character.getInstance();
         bodyCharacter = character.GetComponent<Rigidbody2D>();//reference to character Rigidbody2D
         positionCharacter = character.GetComponent<Transform>();//reference to character Transform
         mousePlace = GetComponent<SpriteRenderer>();
