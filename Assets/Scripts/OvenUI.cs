@@ -55,7 +55,7 @@ public class OvenUI : MonoBehaviour {
         instance = null;
     }
 
-    public static OvenUI getInsance()
+    public static OvenUI getInstance()
     {
         return instance;
     }
