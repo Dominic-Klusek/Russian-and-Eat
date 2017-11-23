@@ -10,10 +10,20 @@ public class Character : MonoBehaviour
     public AudioClip boilSound;
     public AudioClip frySound;
 
-
+    private static Character instance;
     private Dish genericDish;
     private GameObject dishStatus;
     private AudioSource audioSource;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+            Destroy(this.gameObject);
+    }
 
     // Use this for initialization
     void Start()
@@ -34,6 +44,11 @@ public class Character : MonoBehaviour
     void Update()
     {
         //dishStatus.GetComponentInChildren<Text>().text = genericDish.ToString(); ;
+    }
+
+    public static Character getInstance()
+    {
+        return instance;
     }
 
     public void bakeDish()

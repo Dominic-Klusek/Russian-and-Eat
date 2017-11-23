@@ -4,10 +4,22 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class FridgeUI : MonoBehaviour {
-    public int ingredientButtonsSpacing = 30;
+    private static FridgeUI instance;
     private List<Ingredient> ingredientList;
+
+    public int ingredientButtonsSpacing = 30;
     public GameObject ingredientButtonPrefab;
     public GameObject[] floorTiles;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+            Destroy(this.gameObject);
+    }
 
     // Use this for initialization
     void Start () {
@@ -38,6 +50,11 @@ public class FridgeUI : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public static FridgeUI getInstance()
+    {
+        return instance;
+    }
 
 	public void exitClick()
 	{

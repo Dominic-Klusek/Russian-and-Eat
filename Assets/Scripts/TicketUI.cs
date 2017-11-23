@@ -5,9 +5,20 @@ using UnityEngine;
 
 public class TicketUI : MonoBehaviour
 {
+    private static TicketUI instance;
     public int ingredientButtonsSpacing = 50;
     private List<Dish> dishList;
     public GameObject ticketButtonPrefab;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+            Destroy(this.gameObject);
+    }
 
     // Use this for initialization
     void Start()
@@ -44,6 +55,11 @@ public class TicketUI : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public static TicketUI getInstance()
+    {
+        return instance;
     }
 
     private IEnumerator indicateCorrectDishWasMade(Button button)

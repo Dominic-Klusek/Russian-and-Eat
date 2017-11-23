@@ -4,11 +4,22 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class OvenUI : MonoBehaviour {
+    private static OvenUI instance;
     Character player;
     Button fry;
     Button boil;
     Button bake;
     public GameObject[] floorTiles;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+            Destroy(this.gameObject);
+    }
 
     // Use this for initialization
     void Start () {
@@ -38,6 +49,11 @@ public class OvenUI : MonoBehaviour {
     void Update () {
 		
 	}
+
+    public static OvenUI getInsance()
+    {
+        return instance;
+    }
 
 	public void exitClick()
 	{
