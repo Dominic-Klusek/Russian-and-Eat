@@ -1,9 +1,20 @@
 fileFormatVersion: 2
 guid: f93a475dc57f44d098c4aedc0948789d
-timeCreated: 1509046276
+timeCreated: 1511413632
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: textbox_2_0
+    21300002: textbox_2_1
+    21300004: textbox_2_2
+    21300006: textbox_2_3
+    21300008: textbox_2_4
+    21300010: textbox_2_5
+    21300012: textbox_2_6
+    21300014: textbox_2_7
+    21300016: textbox_2_8
+    21300018: textbox_2_9
+    21300020: textbox_2_10
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -39,7 +50,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -63,9 +74,261 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: textbox_2_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 511
+        width: 375
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -187.5, y: 123.5}
+        - {x: -187.5, y: -123.5}
+        - {x: 187.5, y: -123.5}
+        - {x: 187.5, y: 123.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_1
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 650
+        width: 315
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -100.61279, y: -16.027222}
+        - {x: -100.628815, y: -41.098633}
+        - {x: -64.4386, y: -41.075073}
+        - {x: -64.50134, y: -16.06726}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_2
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 511
+        width: 398
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -199, y: 123.5}
+        - {x: -199, y: -123.5}
+        - {x: 199, y: -123.5}
+        - {x: 199, y: 123.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_3
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 511
+        width: 315
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -157.5, y: 63.5}
+        - {x: -157.5, y: -63.5}
+        - {x: 157.5, y: -63.5}
+        - {x: 157.5, y: 63.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_4
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 216
+        width: 498
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -249, y: 141.5}
+        - {x: -249, y: -141.5}
+        - {x: 249, y: -141.5}
+        - {x: 249, y: 141.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_5
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 327
+        width: 309
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -154.5, y: 86}
+        - {x: -154.5, y: -86}
+        - {x: 154.5, y: -86}
+        - {x: 154.5, y: 86}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_6
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 331
+        width: 283
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -141.5, y: 84}
+        - {x: -141.5, y: -84}
+        - {x: 141.5, y: -84}
+        - {x: 141.5, y: 84}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 11
+        width: 498
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -249, y: 96.5}
+        - {x: -249, y: -96.5}
+        - {x: 249, y: -96.5}
+        - {x: 249, y: 96.5}
+      - - {x: -177, y: -15.5}
+        - {x: -109, y: 25.5}
+        - {x: -96, y: -58.5}
+        - {x: -176, y: -63.5}
+      - - {x: -179, y: 1.5}
+        - {x: -152, y: 22.5}
+        - {x: -150, y: 24.5}
+        - {x: -180, y: -5.5}
+        - {x: -179, y: -5.5}
+      - - {x: -180, y: 27.5}
+        - {x: -172, y: 27.5}
+        - {x: -170, y: 29.5}
+        - {x: -181, y: 18.5}
+        - {x: -180, y: 18.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_8
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 109
+        width: 309
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -154.5, y: 103}
+        - {x: -154.5, y: -103}
+        - {x: 154.5, y: -103}
+        - {x: 154.5, y: 103}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_9
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 110
+        width: 283
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -141.5, y: 104.5}
+        - {x: -141.5, y: -104.5}
+        - {x: 141.5, y: -104.5}
+        - {x: 141.5, y: 104.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: textbox_2_10
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 11
+        width: 604
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -302, y: 43}
+        - {x: -302, y: -43}
+        - {x: 302, y: -43}
+        - {x: 302, y: 43}
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
