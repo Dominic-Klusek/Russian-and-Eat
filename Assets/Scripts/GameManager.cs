@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
 
     private void OnDestroy()
     {
-        instance = bull;
+        instance = null;
     }
 
     public void StartGame()
