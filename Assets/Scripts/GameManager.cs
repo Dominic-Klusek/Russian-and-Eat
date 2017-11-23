@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour {
     public TextAsset ingredientsFile;
     public TextAsset recipesFile;
 	public bool femaleCharacter = false;
+    public bool isBakingAvailable = true;
+    public bool isFryingAvailable = false;
+    public bool isBoilingAvailable = false;
 
     public string[] namesOfStartingIngredients = { "water", "flour" };
     public string[] namesOfStartingDishes = { "bread" };
@@ -189,5 +192,20 @@ public class GameManager : MonoBehaviour {
     public List<Dish> getDishesAvailable()
     {
         return dishesAvailable;
+    }
+
+    public bool getIsBakingAvailable()
+    {
+        return isBakingAvailable;
+    }
+
+    public bool getIsFryingAvailable()
+    {
+        return isFryingAvailable;
+    }
+
+    public bool getIsBoilingAvailable()
+    {
+        return isBoilingAvailable;
     }
 }
