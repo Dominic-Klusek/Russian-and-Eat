@@ -12,7 +12,7 @@ public class TicketUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        dishList = FindObjectOfType<GameManager>().getAllDishes();
+        dishList = FindObjectOfType<GameManager>().getDishesAvailable();
         var scrollContentContainer = transform.Find("Scroll View/Viewport/Content");
         //Button button = scrollContentContainer.GetComponentInChildren<Button>();
         //button.GetComponentInChildren<Text>().text = dishList[1].ToString();
