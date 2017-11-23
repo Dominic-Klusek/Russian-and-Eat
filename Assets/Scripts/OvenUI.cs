@@ -13,15 +13,25 @@ public class OvenUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         player = FindObjectOfType<Character>();
+        GameManager game = Object.FindObjectOfType<GameManager>();
 
         fry = GameObject.Find("FryButton").GetComponent<Button>();
-        fry.onClick.AddListener(player.fryDish);
+        if (!game.getIsFryingAvailable())
+            fry.gameObject.SetActive(false);
+        else
+            fry.onClick.AddListener(player.fryDish);
 
         boil = GameObject.Find("BoilButton").GetComponent<Button>();
-        boil.onClick.AddListener(player.boilDish);
+        if (!game.getIsBoilingAvailable())
+            boil.gameObject.SetActive(false);
+        else
+            boil.onClick.AddListener(player.boilDish);
 
         bake = GameObject.Find("Roast/BakeButton").GetComponent<Button>();
-        bake.onClick.AddListener(player.bakeDish);
+        if (!game.getIsBakingAvailable())
+            bake.gameObject.SetActive(false);
+        else
+            bake.onClick.AddListener(player.bakeDish);
     }
 
     // Update is called once per frame
