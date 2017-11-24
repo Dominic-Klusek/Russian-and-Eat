@@ -56,6 +56,11 @@ public class GameManager : MonoBehaviour {
         instance = null;
     }
 
+    public static GameManager getInstance()
+    {
+        return instance;
+    }
+
     public void StartGame()
 	{
 		SceneManager.LoadScene("CharacterCreation");
