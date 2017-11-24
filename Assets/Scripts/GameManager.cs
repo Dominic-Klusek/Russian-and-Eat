@@ -85,6 +85,13 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(scene);
         Debug.Log("Loaded " + scene + ".");
     }
+
+    public void LoadNextScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
 	public void LoadLevel1()
 	{
 		SceneManager.LoadScene("scene1");
