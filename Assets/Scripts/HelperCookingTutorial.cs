@@ -70,7 +70,7 @@ public class HelperCookingTutorial : MonoBehaviour {
                                 "At that time, we can decide what to improve the restaurant.\n" +
                                 "For now, let's get started!\n";
                 if (GUI.Button(new Rect(900, 625, 50, 50), "START"))
-                    gameManager.LoadScene("scene1");
+                    gameManager.LoadNextScene();
                 break;
             default:
 			    break;

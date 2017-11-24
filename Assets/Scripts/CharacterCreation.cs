@@ -50,7 +50,7 @@ public class CharacterCreation : MonoBehaviour {
 		case 2:
 			dialogue.text = "Great! Click Play when you're ready to start!";
 			if (GUI.Button (new Rect (750, 400, 50, 50), "PLAY")) {
-				game.LoadScene("Tutorial-Cooking");
+				game.LoadNextScene();
 			}
 			break;
 		default:
