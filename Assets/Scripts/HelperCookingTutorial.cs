@@ -7,16 +7,13 @@ public class HelperCookingTutorial : MonoBehaviour {
     private int tutorialStage = 0;
     private Text dialogue;
     private Character player;
+    private GameManager gameManager;
 
-    public Texture btnTexture;
-	public GameObject maleObject;
-	public GameObject femaleObject;
-
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		dialogue = GetComponent<Text> ();
         player = Character.getInstance();
+        gameManager = GameManager.getInstance();
 }
 	
 	// Update is called once per frame
@@ -31,7 +28,7 @@ public class HelperCookingTutorial : MonoBehaviour {
             tutorialStage = 4;
         else if (tutorialStage == 4 && player.getCharacterDish().getCookingStatus() == Dish.CookingStatus.BAKED)
             tutorialStage = 5;
-        else if (tutorialStage == 5 && player.getCharacterDish().getCookingStatus() == Dish.CookingStatus.BAKED)
+        else if (tutorialStage == 5 && player.getCharacterDish().getIngredientList().Count == 0)
             tutorialStage = 6;
     }
 
@@ -58,9 +55,9 @@ public class HelperCookingTutorial : MonoBehaviour {
                 dialogue.text = "Next, head over to the stove by clicking on it.\n";
                 break;
             case 4:
-                dialogue.text = "Clicking on the stove will show you the available options for cooking.\n" +
+                dialogue.text = "The stove will show you the available options for cooking.\n" +
                                 "For now we can only bake, but when we can afford it, we can buy what we need to cook in other ways!\n" +
-                                "For now, click on bake to bake the bread.\n";
+                                "For now, click on Bake/Roast to bake the bread.\n";
                 break;
             case 5:
                 dialogue.text = "Mmm, that smells great! Looks like the bread is ready!\n" +
@@ -71,8 +68,10 @@ public class HelperCookingTutorial : MonoBehaviour {
             case 6:
                 dialogue.text = "Nice Job! Looks like you're ready to open the restaurant!\n" +
                                 "After each day, we'll look at how much money we made.\n" +
-                                "At that time, we can decide what we can buy to improve the restaurant.\n" +
+                                "At that time, we can decide what to improve the restaurant.\n" +
                                 "For now, let's get started!\n";
+                if (GUI.Button(new Rect(900, 625, 50, 50), "START"))
+                    gameManager.LoadScene("scene1");
                 break;
             default:
 			    break;

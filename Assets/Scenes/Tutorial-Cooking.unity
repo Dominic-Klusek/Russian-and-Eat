@@ -4108,6 +4108,19 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114597201222070184, guid: 96922790ab8bca54188a61b12c1db383,
+        type: 2}
+      propertyPath: m_Text
+      value: "Nice Job! Looks like you're ready to open the restaurant!\nAfter each
+        day, we'll look at how much money we made.\r\nAt that time, we can decide
+        what to buy to improve the restaurant.\nFor now, let's get started!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114854782434015396, guid: 96922790ab8bca54188a61b12c1db383,
+        type: 2}
+      propertyPath: ingredientButtonPrefab
+      value: 
+      objectReference: {fileID: 1652942563159508, guid: 6905104a21aeea446953168e1236c5e7,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96922790ab8bca54188a61b12c1db383, type: 2}
   m_IsPrefabParent: 0
