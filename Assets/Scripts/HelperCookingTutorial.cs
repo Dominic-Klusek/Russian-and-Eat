@@ -33,7 +33,6 @@ public class HelperCookingTutorial : MonoBehaviour {
     }
 
     void OnGUI(){
-		GameManager game = Object.FindObjectOfType<GameManager>();
 		switch (tutorialStage) {
 		    case 0:
                 dialogue.text = "Since you're new here, I'll show you around the kitchen.\n" +
