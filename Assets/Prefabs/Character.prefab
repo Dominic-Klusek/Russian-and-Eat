@@ -199,6 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishedMovement: 1
+  addingIngredientSound: {fileID: 8300000, guid: ed46be5cf41081a4b809c1cfc93fa484,
+    type: 3}
   bakeSound: {fileID: 8300000, guid: 90ffcd96623038544bbf2b2042ab8594, type: 3}
   boilSound: {fileID: 0}
   frySound: {fileID: 0}
