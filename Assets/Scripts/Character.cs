@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     public bool finishedMovement = true;
+    public AudioClip addingIngredientSound;
     public AudioClip bakeSound;
     public AudioClip boilSound;
     public AudioClip frySound;
@@ -90,6 +91,12 @@ public class Character : MonoBehaviour
 
     public void addIngredientToDish(Ingredient ingredient)
     {
+        if (addingIngredientSound != null)
+        {
+            audioSource.clip = addingIngredientSound;
+            audioSource.Play();
+        }
+
         genericDish.addIngredient(ingredient);
     }
 
