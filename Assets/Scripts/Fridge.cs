@@ -41,7 +41,7 @@ public class Fridge : MonoBehaviour {
 	{
         floorTileMove = GameObject.Find("FloorTile (2)");
         floorTileMove.GetComponent<Move>().clickedFridge = true;
-        floorTileMove.GetComponent<Move>().OnMouseDown();
+        
         character = GameObject.Find("Character");
 
 		if (character.GetComponent<Character>().finishedMovement) {
@@ -52,6 +52,8 @@ public class Fridge : MonoBehaviour {
 			floorTiles = GameObject.FindGameObjectsWithTag ("Floor");
 			foreach (GameObject FloorTile in floorTiles) {
 				FloorTile.GetComponent<Move> ().interactable = false;
+			floorTileMove.GetComponent<Move>().OnMouseDown();
+
 			}
 		}
     }
