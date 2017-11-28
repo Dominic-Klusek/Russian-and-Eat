@@ -10,7 +10,6 @@ public class Fridge : MonoBehaviour {
     public GameObject[] floorTiles;
     public GameObject floorTileMove;
     public GameObject character;
-    public bool interactable = true;
 
     // Use this for initialization
     void Start () {
@@ -45,14 +44,15 @@ public class Fridge : MonoBehaviour {
         floorTileMove.GetComponent<Move>().OnMouseDown();
         character = GameObject.Find("Character");
 
-        //prevent multiple instances of popup UIs from existing
-        if (GameObject.FindGameObjectWithTag("Popup UI") == null)
-           	Instantiate(fridgeUI);//create instance of oven ui
+		if (character.GetComponent<Character>().finishedMovement) {
+			//prevent multiple instances of popup UIs from existing
+			if (GameObject.FindGameObjectWithTag ("Popup UI") == null)
+				Instantiate (fridgeUI);//create instance of oven ui
 
-        floorTiles = GameObject.FindGameObjectsWithTag("Floor");
-        foreach (GameObject FloorTile in floorTiles)
-        {
-            FloorTile.GetComponent<Move>().interactable = false;
-        }
+			floorTiles = GameObject.FindGameObjectsWithTag ("Floor");
+			foreach (GameObject FloorTile in floorTiles) {
+				FloorTile.GetComponent<Move> ().interactable = false;
+			}
+		}
     }
 }

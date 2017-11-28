@@ -44,14 +44,15 @@ public class Stove : MonoBehaviour {
         floorTileMove.GetComponent<Move>().OnMouseDown();
         character = GameObject.Find("Character");
 
-        //prevent multiple instances of popup UIs from existing
-        if (GameObject.FindGameObjectWithTag("Popup UI") == null)
-            Instantiate(ovenUI);//create instance of oven ui
+		if (character.GetComponent<Character> ().finishedMovement) {
+			//prevent multiple instances of popup UIs from existing
+			if (GameObject.FindGameObjectWithTag ("Popup UI") == null)
+				Instantiate (ovenUI);//create instance of oven ui
 
-        floorTiles = GameObject.FindGameObjectsWithTag("Floor");
-        foreach (GameObject FloorTile in floorTiles)
-        {
-            FloorTile.GetComponent<Move>().interactable = false;
-        }
+			floorTiles = GameObject.FindGameObjectsWithTag ("Floor");
+			foreach (GameObject FloorTile in floorTiles) {
+				FloorTile.GetComponent<Move> ().interactable = false;
+			}
+		}
     }
 }
