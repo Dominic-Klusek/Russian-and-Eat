@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
     public string[] namesOfStartingIngredients = { "water", "flour" };
     public string[] namesOfStartingDishes = { "bread" };
 
-    public int playerMoney = 0;
+    private int playerMoney = 0;
 
     private List<Ingredient> allIngredients;
     private List<Dish> allDishes;
