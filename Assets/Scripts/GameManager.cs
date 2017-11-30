@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
     public string[] namesOfStartingIngredients = { "water", "flour" };
     public string[] namesOfStartingDishes = { "bread" };
 
+    public int playerMoney = 0;
+
     private List<Ingredient> allIngredients;
     private List<Dish> allDishes;
 
@@ -224,5 +226,20 @@ public class GameManager : MonoBehaviour {
     public bool getIsBoilingAvailable()
     {
         return isBoilingAvailable;
+    }
+
+    public int getPlayerMoney()
+    {
+        return playerMoney;
+    }
+
+    public void setPlayerMoney(int money)
+    {
+        playerMoney = money;
+    }
+
+    public void awardPlayerMoney(int money)
+    {
+        playerMoney += money;
     }
 }
