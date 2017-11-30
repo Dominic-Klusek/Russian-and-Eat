@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     public bool finishedMovement = true;
+    public int moneyAwardPerIngredient = 3;
     public AudioClip addingIngredientSound;
     public AudioClip bakeSound;
     public AudioClip boilSound;
     public AudioClip frySound;
 
+    private GameManager gameManager;
     private static Character instance;
     private Dish genericDish;
     private GameObject dishStatus;
@@ -30,8 +32,8 @@ public class Character : MonoBehaviour
     void Start()
     {
         genericDish = Dish.getEmptyDish();
-        GameManager game = Object.FindObjectOfType<GameManager>();
-        if (game.femaleCharacter == true)
+        gameManager = GameManager.getInstance();
+        if (gameManager.femaleCharacter == true)
         {
             Animator animator;
             animator = this.GetComponent<Animator>();
@@ -44,7 +46,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //dishStatus.GetComponentInChildren<Text>().text = genericDish.ToString(); ;
+        Debug.Log(gameManager.getPlayerMoney());
     }
 
     private void OnDestroy()
@@ -112,8 +114,14 @@ public class Character : MonoBehaviour
         bool dishesMatch = genericDish.Equals(orderedDish);
         string outp = dishesMatch ? "Requested dish successfully created!" : "Requested dish made incorrectly!";
         Debug.Log(outp);
+        gameManager.awardPlayerMoney(calculateAwardForDish(orderedDish));
         genericDish = Dish.getEmptyDish();
         return dishesMatch;
+    }
+
+    private int calculateAwardForDish(Dish dish)
+    {        
+        return dish.getIngredientArray().Length * moneyAwardPerIngredient;
     }
 
     public void restartDish()
