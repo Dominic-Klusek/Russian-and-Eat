@@ -46,7 +46,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(gameManager.getPlayerMoney());
+        //Debug.Log(gameManager.getPlayerMoney());
     }
 
     private void OnDestroy()
