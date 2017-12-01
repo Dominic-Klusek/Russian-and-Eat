@@ -9,6 +9,7 @@ public class SoundSlider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         soundSlider = GetComponentInChildren<Slider>();
+        soundSlider.value = SoundManager.getInstance().getSoundVolume();
         soundSlider.onValueChanged.AddListener(delegate { changeSoundVolume(); });
     }
 
