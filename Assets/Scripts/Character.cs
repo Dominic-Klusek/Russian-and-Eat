@@ -16,7 +16,6 @@ public class Character : MonoBehaviour
     private static Character instance;
     private Dish genericDish;
     private GameObject dishStatus;
-    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -40,7 +39,6 @@ public class Character : MonoBehaviour
             animator.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("AnimatorControllers/chef_female", typeof(RuntimeAnimatorController)));
         }
         dishStatus = GameObject.Find("PlayerDishStatus");
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,8 +59,8 @@ public class Character : MonoBehaviour
 
     public void bakeDish()
     {
-        audioSource.clip = bakeSound;
-        audioSource.Play();
+        if (bakeSound != null)
+            SoundManager.getInstance().playAudioClipWithRandomizedPitch(bakeSound);
         genericDish.setCookingStatus(Dish.CookingStatus.BAKED);
     }
 
@@ -74,31 +72,20 @@ public class Character : MonoBehaviour
     public void boilDish()
     {
         if (boilSound != null)
-        {
-            audioSource.clip = boilSound;
-            audioSource.Play();
-        }
+            SoundManager.getInstance().playAudioClipWithRandomizedPitch(boilSound);
         genericDish.setCookingStatus(Dish.CookingStatus.BOILED);
     }
 
     public void fryDish()
     {
         if (frySound != null)
-        {
-            audioSource.clip = frySound;
-            audioSource.Play();
-        }
+            SoundManager.getInstance().playAudioClipWithRandomizedPitch(frySound);
         genericDish.setCookingStatus(Dish.CookingStatus.FRIED);
     }
 
     public void addIngredientToDish(Ingredient ingredient)
     {
-        if (addingIngredientSound != null)
-        {
-            audioSource.clip = addingIngredientSound;
-            audioSource.Play();
-        }
-
+        SoundManager.getInstance().playAudioClipWithRandomizedPitch(addingIngredientSound);
         genericDish.addIngredient(ingredient);
     }
 
