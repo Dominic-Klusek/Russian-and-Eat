@@ -61,9 +61,19 @@ public class SoundManager : MonoBehaviour {
         soundSource.volume = volume;
     }
 
+    public float getSoundVolume()
+    {
+        return soundSource.volume;
+    }
+
     public void setMusicVolume(float volume)
     {
         musicSource.volume = volume;
+    }
+
+    public float getMusicVolume()
+    {
+        return musicSource.volume;
     }
 
     public static SoundManager getInstance()
