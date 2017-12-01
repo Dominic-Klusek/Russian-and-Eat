@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     private static Character instance;
     private Dish genericDish;
     private GameObject dishStatus;
+    private PlayerIngredientDisplayer ingredientDisplayer;
 
     private void Awake()
     {
@@ -39,6 +40,8 @@ public class Character : MonoBehaviour
             animator.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("AnimatorControllers/chef_female", typeof(RuntimeAnimatorController)));
         }
         dishStatus = GameObject.Find("PlayerDishStatus");
+
+        ingredientDisplayer = GameObject.Find("Player Ingredient Displayer Button").GetComponent<PlayerIngredientDisplayer>();
     }
 
     // Update is called once per frame
@@ -122,6 +125,6 @@ public class Character : MonoBehaviour
 
     private void updateIngredientsDisplayed()
     {
-        
+        ingredientDisplayer.updateIngredientsDisplayed(genericDish);
     }
 }
