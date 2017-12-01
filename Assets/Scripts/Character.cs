@@ -110,6 +110,7 @@ public class Character : MonoBehaviour
         Debug.Log(outp);
         gameManager.awardPlayerMoney(calculateAwardForDish(orderedDish));
         genericDish = Dish.getEmptyDish();
+        updateIngredientsDisplayed();
         return dishesMatch;
     }
 
@@ -125,6 +126,9 @@ public class Character : MonoBehaviour
 
     private void updateIngredientsDisplayed()
     {
-        ingredientDisplayer.updatePlayerIngredientsDisplayed(genericDish);
+        if (genericDish.getIngredientList().Count != 0)
+            ingredientDisplayer.updatePlayerIngredientsDisplayed(genericDish);
+        else
+            ingredientDisplayer.clearPlayerIngredientsDisplayer();
     }
 }
