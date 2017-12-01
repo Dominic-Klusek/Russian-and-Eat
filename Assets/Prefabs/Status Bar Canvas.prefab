@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 222486853424294730}
   - component: {fileID: 114024296964305720}
   - component: {fileID: 114141187049788618}
+  - component: {fileID: 114404187949375542}
   m_Layer: 5
   m_Name: Sound Slider Button
   m_TagString: Untagged
@@ -272,8 +273,9 @@ GameObject:
   - component: {fileID: 222067013262081826}
   - component: {fileID: 114505298375139624}
   - component: {fileID: 114063914921945206}
+  - component: {fileID: 114907263418518104}
   m_Layer: 5
-  m_Name: Current Ingredients Button
+  m_Name: Player Ingredient Displayer Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,6 +407,7 @@ GameObject:
   - component: {fileID: 222940642797693310}
   - component: {fileID: 114171315535779716}
   - component: {fileID: 114871030212534918}
+  - component: {fileID: 114767528818869742}
   m_Layer: 5
   m_Name: Music Slider Button
   m_TagString: Untagged
@@ -717,7 +720,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Recent Ingredient
+  m_Text: 'Most Recent Ingredient
 
 '
 --- !u!114 &114211831564441968
@@ -822,6 +825,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114404187949375542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305256409991556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8858b7d3197533b42b080244d9a52620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114446358341001934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1067,6 +1081,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114767528818869742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982112857848548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ffb3cdbf6b6784e899aa98c237441d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114819998514379718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1156,6 +1181,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114907263418518104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1700471918603622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb48776e7c65eb240b4ed7d4bc74ef41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114907723689325286
 MonoBehaviour:
   m_ObjectHideFlags: 1
