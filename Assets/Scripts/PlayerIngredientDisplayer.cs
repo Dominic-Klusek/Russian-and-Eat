@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerIngredientDisplayer : MonoBehaviour {
-    public string noIngredientsText;
+    public string startingMessage = "Most Recent Ingredient";
+    public string noIngredientsText = "Dish Emptied";
 
     private Text buttonText;
     private List<string> ingredientTransliterationsToDisplay;
@@ -13,7 +14,7 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		buttonText = GetComponentInChildren<Text>();
-        buttonText.text = noIngredientsText;
+        buttonText.text = startingMessage;
     }
 	
 	// Update is called once per frame
