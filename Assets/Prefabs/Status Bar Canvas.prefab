@@ -1192,6 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb48776e7c65eb240b4ed7d4bc74ef41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noIngredientsText: 'Most Recent Ingredient '
 --- !u!114 &114907723689325286
 MonoBehaviour:
   m_ObjectHideFlags: 1
