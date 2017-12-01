@@ -13,11 +13,11 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		buttonText = GetComponentInChildren<Text>();
+        buttonText.text = noIngredientsText;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //buttonText.text = "s";
     }
 
     public void updatePlayerIngredientsDisplayed(Dish playerDish)
