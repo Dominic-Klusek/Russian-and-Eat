@@ -9,15 +9,16 @@ public class SoundSlider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         soundSlider = GetComponentInChildren<Slider>();
-        soundSlider.onValueChanged.AddListener(delegate { changeMusicVolume(); });
+        soundSlider.onValueChanged.AddListener(delegate { changeSoundVolume(); });
     }
 
     // Update is called once per frame
     void Update () {
 	}
 
-    void changeMusicVolume()
+    void changeSoundVolume()
     {
         SoundManager.getInstance().setSoundVolume(soundSlider.value);
     }
+
 }
