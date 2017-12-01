@@ -10,6 +10,7 @@ public class PlayerMoneyIndicator : MonoBehaviour {
     // Use this for initialization
     void Start () {
         buttonText = GetComponentInChildren<Text>();
+        buttonText.text = GameManager.getInstance().getPlayerMoney().ToString();
     }
 
     // Update is called once per frame
