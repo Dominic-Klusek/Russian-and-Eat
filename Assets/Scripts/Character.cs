@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     private Dish genericDish;
     private GameObject dishStatus;
     private PlayerIngredientDisplayer ingredientDisplayer;
+    private PlayerMoneyIndicator moneyDisplayer;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class Character : MonoBehaviour
         dishStatus = GameObject.Find("PlayerDishStatus");
 
         ingredientDisplayer = GameObject.Find("Player Ingredient Displayer Button").GetComponent<PlayerIngredientDisplayer>();
+        moneyDisplayer = GameObject.Find("Player Money Indicator").GetComponent<PlayerMoneyIndicator>();
     }
 
     // Update is called once per frame
@@ -108,7 +110,11 @@ public class Character : MonoBehaviour
         bool dishesMatch = genericDish.Equals(orderedDish);
         string outp = dishesMatch ? "Requested dish successfully created!" : "Requested dish made incorrectly!";
         Debug.Log(outp);
-        gameManager.awardPlayerMoney(calculateAwardForDish(orderedDish));
+        if (dishesMatch)
+        {
+            gameManager.awardPlayerMoney(calculateAwardForDish(orderedDish));
+            moneyDisplayer.updatePlayerMoneyDisplayed();
+        }
         genericDish = Dish.getEmptyDish();
         updateIngredientsDisplayed();
         return dishesMatch;
