@@ -125,6 +125,6 @@ public class Character : MonoBehaviour
 
     private void updateIngredientsDisplayed()
     {
-        ingredientDisplayer.updateIngredientsDisplayed(genericDish);
+        ingredientDisplayer.updatePlayerIngredientsDisplayed(genericDish);
     }
 }

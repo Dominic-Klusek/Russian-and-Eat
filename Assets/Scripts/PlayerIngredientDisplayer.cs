@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerIngredientDisplayer : MonoBehaviour {
+    public string noIngredientsText;
+
     private Text buttonText;
     private List<string> ingredientTransliterationsToDisplay;
     private string mostRecentIngredient;
@@ -18,10 +20,15 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
         //buttonText.text = "s";
     }
 
-    public void updateIngredientsDisplayed(Dish playerDish)
+    public void updatePlayerIngredientsDisplayed(Dish playerDish)
     {
         List<Ingredient> dishIngredients = playerDish.getIngredientList();
         mostRecentIngredient = dishIngredients[dishIngredients.Count - 1].getTransliteration();
         buttonText.text = mostRecentIngredient;
+    }
+
+    public void clearPlayerIngredientsDisplayer()
+    {
+        buttonText.text = noIngredientsText;
     }
 }
