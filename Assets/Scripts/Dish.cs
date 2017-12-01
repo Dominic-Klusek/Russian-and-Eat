@@ -104,12 +104,13 @@ public class Dish {
         this.cookingStatus = cookingStatus;
     }
 
-    public void addIngredient(Ingredient ingredient)
+    public bool addIngredient(Ingredient ingredient)
     {
         foreach (Ingredient i in ingredients)
             if (i.Equals(ingredient))
-                return;
+                return false;
         ingredients.Add(ingredient);
+        return true;
     }
 
     private string name;
