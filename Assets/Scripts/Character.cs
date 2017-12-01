@@ -85,8 +85,12 @@ public class Character : MonoBehaviour
 
     public void addIngredientToDish(Ingredient ingredient)
     {
-        SoundManager.getInstance().playAudioClipWithRandomizedPitch(addingIngredientSound);
-        genericDish.addIngredient(ingredient);
+        bool ingredientAdded = genericDish.addIngredient(ingredient);
+        if (ingredientAdded)
+        {
+            SoundManager.getInstance().playAudioClipWithRandomizedPitch(addingIngredientSound);
+            updateIngredientsDisplayed();
+        }
     }
 
     public Dish getCharacterDish()
@@ -114,5 +118,10 @@ public class Character : MonoBehaviour
     public void restartDish()
     {
         genericDish = Dish.getEmptyDish();
+    }
+
+    private void updateIngredientsDisplayed()
+    {
+        
     }
 }
