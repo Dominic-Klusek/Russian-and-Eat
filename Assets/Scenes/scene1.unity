@@ -895,6 +895,28 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 739033f78a71f6e42a2475fb78c5b8e8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &258296860 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1966894610488638, guid: 08e1c57c01bde3e429defac8bae2df7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2004273526}
+--- !u!95 &258296862
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 258296860}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 015305471a448c44a9451b6d6ac01c7a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &259277806
 Prefab:
   m_ObjectHideFlags: 0
@@ -4836,6 +4858,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114283420289533654, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224428502799674324, guid: 08e1c57c01bde3e429defac8bae2df7c,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -4980,6 +5007,56 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224507731892929896, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224507731892929896, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224507731892929896, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 224507731892929896, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224142930057476970, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224142930057476970, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224142930057476970, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 224142930057476970, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283420289533654, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283420289533654, guid: 08e1c57c01bde3e429defac8bae2df7c,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08e1c57c01bde3e429defac8bae2df7c, type: 2}
@@ -5247,6 +5324,28 @@ Transform:
   m_PrefabParentObject: {fileID: 4781225068272592, guid: 739033f78a71f6e42a2475fb78c5b8e8,
     type: 2}
   m_PrefabInternal: {fileID: 2045752968}
+--- !u!1 &2084980924 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1009186954877322, guid: 08e1c57c01bde3e429defac8bae2df7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2004273526}
+--- !u!95 &2084980926
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2084980924}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 015305471a448c44a9451b6d6ac01c7a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &2096406931
 Prefab:
   m_ObjectHideFlags: 0
