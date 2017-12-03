@@ -9,6 +9,7 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
     public int ingredientButtonsSpacing = 30;
     public GameObject ingredientDisplayButtonPrefab;
     public Button secondaryIngredientDisplayerToggleButton;
+    // Determine how many seconds before auto-hiding. Set to 0 to disable auto-hide.
     public float secondsUntilHidingIdleDisplayer = 7;
 
     private Text recentIngredientButtonText;
@@ -38,15 +39,16 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (secondsUntilHidingIdleDisplayer <= 0)
-            return;
-        if (!isDisplayerHidden)
+        if (secondsUntilHidingIdleDisplayer > 0)
         {
-            secondsDisplayerIdle += Time.deltaTime;
-            if (secondsDisplayerIdle >= secondsUntilHidingIdleDisplayer)
+            if (!isDisplayerHidden)
             {
-                toggleDisplayer();
-                secondsDisplayerIdle = 0;
+                secondsDisplayerIdle += Time.deltaTime;
+                if (secondsDisplayerIdle >= secondsUntilHidingIdleDisplayer)
+                {
+                    toggleDisplayer();
+                    secondsDisplayerIdle = 0;
+                }
             }
         }
     }
