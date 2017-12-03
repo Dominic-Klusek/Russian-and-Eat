@@ -25,8 +25,6 @@ public class IngredientShopping : MonoBehaviour {
         //button.GetComponentInChildren<Text>().text = dishList[1].ToString();
         for (int i = 0; i < unPurchasedIngredientList.Count; i++)
         {
-            GameManager.getInstance().awardPlayerMoney(2 * costPerIngredient);
-
             GameObject button = Instantiate(buyItemButtonPrefab) as GameObject;
 
             // makes the button a child of the scroll container
