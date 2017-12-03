@@ -14,8 +14,9 @@ public class CharacterCreation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		dialogue = GetComponent<Text> ();
-        
-}
+        maleObject = GameObject.Find("chef_male_0");
+        femaleObject = GameObject.Find("chef_female_0");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -27,20 +28,20 @@ public class CharacterCreation : MonoBehaviour {
 		case 0:
 			dialogue.text = "Welcome to Russian-and-Eat. I'm your guide, Vladimir.\n" +
 				"The goal of this game is to teach you the Russian language and to cook Russian cuisine.";
-			if (GUI.Button (new Rect (750, 400, 50, 50), "Next")) {
+			if (GUI.Button (new Rect (Screen.width / 2 + 200, Screen.height / 2 + 35, 100, 50), "Next")) {
 				textSpot++;
 			}
 			break;
 		case 1:
 			displayCharacters ();
 			dialogue.text = "Before we get started I need to know,\nwho would you like to play as?";
-			if (GUI.Button (new Rect (375, 300, 60, 60), "Male")) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 165, Screen.height / 2 + 35, 100, 50), "Male")) {
 				hideFemaleCharacter ();
 				print ("Male");
 				game.femaleCharacter = false;
 				textSpot++;
 			}
-			if (GUI.Button (new Rect (550, 300, 60, 60), "Female")) {
+			if (GUI.Button (new Rect (Screen.width / 2 + 80, Screen.height / 2 + 35, 100, 50), "Female")) {
 				hideMaleCharacter ();
 				print ("Female");
 				game.femaleCharacter = true;
@@ -49,7 +50,7 @@ public class CharacterCreation : MonoBehaviour {
 			break;
 		case 2:
 			dialogue.text = "Great! Click Play when you're ready to start!";
-			if (GUI.Button (new Rect (750, 400, 50, 50), "PLAY")) {
+			if (GUI.Button (new Rect(Screen.width / 2 + 200, Screen.height / 2 + 35, 100, 50), "PLAY")) {
 				game.LoadNextScene();
 			}
 			break;
@@ -59,8 +60,6 @@ public class CharacterCreation : MonoBehaviour {
 	}
 
 	void displayCharacters(){
-		maleObject = GameObject.Find ("chef_male_0");
-		femaleObject = GameObject.Find ("chef_female_0");
 		maleObject.GetComponent<SpriteRenderer>().enabled = true;
 		femaleObject.GetComponent<SpriteRenderer>().enabled = true;
 	}
