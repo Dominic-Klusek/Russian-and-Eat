@@ -243,6 +243,11 @@ public class GameManager : MonoBehaviour {
         playerMoney += money;
     }
 
+    public void spendMoney(int money)
+    {
+        playerMoney -= money;
+    }
+
     public void addIngredientToAvailableIngredientsList(Ingredient ingredient)
     {
         ingredientsAvailable.Add(ingredient);
