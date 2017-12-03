@@ -9,7 +9,7 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
     public int ingredientButtonsSpacing = 30;
     public GameObject ingredientDisplayButtonPrefab;
     public Button secondaryIngredientDisplayerToggleButton;
-    //public float secondsUntilHidingIdleDisplayer = 3;
+    public float secondsUntilHidingIdleDisplayer = 7;
 
     private Text recentIngredientButtonText;
     private List<string> ingredientTransliterationsToDisplay;
@@ -38,7 +38,8 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        /*
+        if (secondsUntilHidingIdleDisplayer <= 0)
+            return;
         if (!isDisplayerHidden)
         {
             secondsDisplayerIdle += Time.deltaTime;
@@ -48,7 +49,6 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
                 secondsDisplayerIdle = 0;
             }
         }
-        */
     }
 
     public void updatePlayerIngredientsDisplayed(Dish playerDish)

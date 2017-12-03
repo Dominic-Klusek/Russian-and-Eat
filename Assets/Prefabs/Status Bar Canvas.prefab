@@ -1799,6 +1799,7 @@ MonoBehaviour:
   ingredientDisplayButtonPrefab: {fileID: 1850571987950316, guid: 06aee2dd0d234db48a4ede338ebdb289,
     type: 2}
   secondaryIngredientDisplayerToggleButton: {fileID: 114859217620812034}
+  secondsUntilHidingIdleDisplayer: 7
 --- !u!114 &114907723689325286
 MonoBehaviour:
   m_ObjectHideFlags: 1
