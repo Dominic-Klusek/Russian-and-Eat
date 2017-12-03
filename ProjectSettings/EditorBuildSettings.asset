@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/scene1.unity
     guid: 839a1ec8fcc6c4a1ab3dc70abaacdff4
   - enabled: 1
+    path: Assets/Scenes/Shopping.unity
+    guid: e90400d4a349f7c49bcc0564b8909420
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 054cc5853ef8a4ff2ac4dc2811f4db70
   - enabled: 1
