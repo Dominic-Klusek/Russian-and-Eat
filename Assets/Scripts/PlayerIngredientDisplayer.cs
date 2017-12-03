@@ -19,7 +19,7 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
     private List<Button> allIngredientButtons;
 
     private Animator animator;
-    private bool isDisplayerHidden;
+    public bool isDisplayerHidden;
     private float secondsDisplayerIdle = 0;
     private Button ingredientDisplayerToggleButton;
 
