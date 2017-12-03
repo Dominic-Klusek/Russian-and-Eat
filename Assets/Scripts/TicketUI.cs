@@ -80,9 +80,4 @@ public class TicketUI : MonoBehaviour
         yield return new WaitForSeconds(1);
         button.image.color = Color.white;
     }
-
-    public void exitClick()
-    {
-        Destroy(gameObject);
-    }
 }
