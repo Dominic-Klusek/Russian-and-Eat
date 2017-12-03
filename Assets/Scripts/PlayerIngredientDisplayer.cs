@@ -8,6 +8,8 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
     public string noIngredientsText = "Dish Emptied";
     public int ingredientButtonsSpacing = 30;
     public GameObject ingredientDisplayButtonPrefab;
+    public Button secondaryIngredientDisplayerToggleButton;
+    //public float secondsUntilHidingIdleDisplayer = 3;
 
     private Text recentIngredientButtonText;
     private List<string> ingredientTransliterationsToDisplay;
@@ -15,15 +17,38 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
     private int ingredientsCurrentlyDisplayedCount;
     private List<Button> allIngredientButtons;
 
-	// Use this for initialization
-	void Start () {
+    private Animator animator;
+    private bool isDisplayerHidden;
+    private float secondsDisplayerIdle = 0;
+    private Button ingredientDisplayerToggleButton;
+
+    // Use this for initialization
+    void Start () {
 		recentIngredientButtonText = GetComponentInChildren<Text>();
         recentIngredientButtonText.text = startingMessage;
         allIngredientButtons = new List<Button>();
+
+        ingredientDisplayerToggleButton = GetComponent<Button>();
+        ingredientDisplayerToggleButton.onClick.AddListener(toggleDisplayer);
+        secondaryIngredientDisplayerToggleButton.onClick.AddListener(toggleDisplayer);
+
+        animator = GetComponent<Animator>();
+        isDisplayerHidden = animator.GetBool("isHidden");
     }
 	
 	// Update is called once per frame
 	void Update () {
+        /*
+        if (!isDisplayerHidden)
+        {
+            secondsDisplayerIdle += Time.deltaTime;
+            if (secondsDisplayerIdle >= secondsUntilHidingIdleDisplayer)
+            {
+                toggleDisplayer();
+                secondsDisplayerIdle = 0;
+            }
+        }
+        */
     }
 
     public void updatePlayerIngredientsDisplayed(Dish playerDish)
@@ -73,5 +98,11 @@ public class PlayerIngredientDisplayer : MonoBehaviour {
         allIngredientButtons.Clear();
         Debug.Log("Buttons: " + allIngredientButtons.Count);
         ingredientsCurrentlyDisplayedCount = 0;
+    }
+
+    private void toggleDisplayer()
+    {
+        isDisplayerHidden = !isDisplayerHidden;
+        animator.SetBool("isHidden", isDisplayerHidden);
     }
 }
