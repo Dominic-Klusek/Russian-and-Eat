@@ -58,8 +58,6 @@ public class RecipeShopping : MonoBehaviour {
 
         foreach (Dish dish in dishesMarkedAsCraftable)
             unpurchasedUncraftableDishList.Remove(dish);
-
-        Debug.Log("Craftable count: " + unpurchasedCraftableDishList.Count);
     }
 
     private void updateButtonsForEachCraftableDish()
@@ -96,21 +94,21 @@ public class RecipeShopping : MonoBehaviour {
 
     private void buyRecipeAndUpdateButtons(int recipeIndex, Button button)
     {
-        Debug.Log("index = " + recipeIndex);
+        Debug.Log("Start buy");
         if (GameManager.getInstance().getPlayerMoney() >= costPerRecipe)
         {
             GameManager.getInstance().addDishToAvailableDishList(
-                unpurchasedUncraftableDishList[recipeIndex]);
+                unpurchasedCraftableDishList[recipeIndex]);
             GameManager.getInstance().spendMoney(costPerRecipe);
 
             moneyDisplayer.updatePlayerMoneyDisplayed();
 
-            unpurchasedUncraftableDishList.RemoveAt(recipeIndex);
             unpurchasedCraftableDishList.RemoveAt(recipeIndex);
             updateButtonsForEachCraftableDish();
         }
         else
             StartCoroutine(indicateIngredientNotBought(button));
+        Debug.Log("Start finish");
     }
 
     private IEnumerator indicateIngredientNotBought(Button button)
