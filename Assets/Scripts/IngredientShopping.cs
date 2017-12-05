@@ -12,6 +12,8 @@ public class IngredientShopping : MonoBehaviour {
     private List<Ingredient> unPurchasedIngredientList;
     private List<Button> ingredientBuyingButtons;
     private PlayerMoneyIndicator moneyDisplayer;
+    private RecipeShopping recipeShopping;
+
     // Use this for initialization
     void Start()
     {
@@ -19,6 +21,8 @@ public class IngredientShopping : MonoBehaviour {
         //GameManager.getInstance().awardPlayerMoney(400);
         moneyDisplayer = GameObject.Find("Player Money Indicator").GetComponent<PlayerMoneyIndicator>();
         moneyDisplayer.updatePlayerMoneyDisplayed();
+
+        recipeShopping = transform.parent.GetComponentInChildren<RecipeShopping>();
 
         ingredientBuyingButtons = new List<Button>();
         List<Ingredient> allIngredientList = GameManager.getInstance().getAllIngredients();
@@ -66,6 +70,7 @@ public class IngredientShopping : MonoBehaviour {
                 unPurchasedIngredientList[ingredientIndex]);
             GameManager.getInstance().spendMoney(costPerIngredient);
             moneyDisplayer.updatePlayerMoneyDisplayed();
+            recipeShopping.updateRecipeShopping();
         }
         else
             StartCoroutine(indicateIngredientNotBought(ingredientBuyingButtons[ingredientIndex]));
