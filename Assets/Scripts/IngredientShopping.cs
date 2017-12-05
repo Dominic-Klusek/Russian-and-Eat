@@ -9,7 +9,8 @@ public class IngredientShopping : MonoBehaviour {
     public int buttonSpacing = 50;
     public GameObject buyItemButtonPrefab;
 
-    private List<Ingredient> unPurchasedIngredientList;
+    private Transform scrollContentContainer;
+    private List<Ingredient> unpurchasedIngredientList;
     private List<Button> ingredientBuyingButtons;
     private PlayerMoneyIndicator moneyDisplayer;
     private RecipeShopping recipeShopping;
@@ -18,21 +19,38 @@ public class IngredientShopping : MonoBehaviour {
     void Start()
     {
         // for testing
-        //GameManager.getInstance().awardPlayerMoney(400);
+        GameManager.getInstance().awardPlayerMoney(400);
         moneyDisplayer = GameObject.Find("Player Money Indicator").GetComponent<PlayerMoneyIndicator>();
         moneyDisplayer.updatePlayerMoneyDisplayed();
 
-        recipeShopping = transform.parent.GetComponentInChildren<RecipeShopping>();
+        init();
+    }
 
+    private void init()
+    {
+        recipeShopping = transform.parent.GetComponentInChildren<RecipeShopping>();
         ingredientBuyingButtons = new List<Button>();
+        scrollContentContainer = transform.Find("Viewport/Content");
+
+        initUnpurchasedIngredientList();
+        updateIngredientButtons();
+    }
+
+    private void initUnpurchasedIngredientList()
+    {
         List<Ingredient> allIngredientList = GameManager.getInstance().getAllIngredients();
         List<Ingredient> purchasedIngredientList = GameManager.getInstance().getIngredientsAvailable();
-        unPurchasedIngredientList = allIngredientList.Except(purchasedIngredientList).ToList();
+        unpurchasedIngredientList = allIngredientList.Except(purchasedIngredientList).ToList();
+    }
 
-        var scrollContentContainer = transform.Find("Viewport/Content");
+    private void updateIngredientButtons()
+    {
+        foreach (Button button in ingredientBuyingButtons)
+            Destroy(button.gameObject);
+        ingredientBuyingButtons = new List<Button>();
         //Button button = scrollContentContainer.GetComponentInChildren<Button>();
         //button.GetComponentInChildren<Text>().text = dishList[1].ToString();
-        for (int i = 0; i < unPurchasedIngredientList.Count; i++)
+        for (int i = 0; i < unpurchasedIngredientList.Count; i++)
         {
             GameObject button = Instantiate(buyItemButtonPrefab) as GameObject;
 
@@ -43,7 +61,7 @@ public class IngredientShopping : MonoBehaviour {
 
             Button buttonElement = button.GetComponent<Button>();
             ingredientBuyingButtons.Add(buttonElement);
-            buttonElement.GetComponentInChildren<Text>().text = unPurchasedIngredientList[i].ToString();
+            buttonElement.GetComponentInChildren<Text>().text = unpurchasedIngredientList[i].ToString();
             // do not change this.
             // for some reason, passing i makes the method its being sent to get 2 (when tested with 2 ingredients)
             // throwing out of index exception. giving value of i to a variable
@@ -63,13 +81,15 @@ public class IngredientShopping : MonoBehaviour {
         Debug.Log("index = " + ingredientIndex);
         if (GameManager.getInstance().getPlayerMoney() >= costPerIngredient)
         {
-            Destroy(ingredientBuyingButtons[ingredientIndex].gameObject);
-            //ingredientBuyingButtons.RemoveAt(ingredientIndex);
-
             GameManager.getInstance().addIngredientToAvailableIngredientsList(
-                unPurchasedIngredientList[ingredientIndex]);
+                unpurchasedIngredientList[ingredientIndex]);
             GameManager.getInstance().spendMoney(costPerIngredient);
+
+            // now that it's purchased, remove from unpurchased list
+            unpurchasedIngredientList.RemoveAt(ingredientIndex);
+
             moneyDisplayer.updatePlayerMoneyDisplayed();
+            updateIngredientButtons();
             recipeShopping.updateRecipeShopping();
         }
         else
