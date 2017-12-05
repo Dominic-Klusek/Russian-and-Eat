@@ -252,4 +252,9 @@ public class GameManager : MonoBehaviour {
     {
         ingredientsAvailable.Add(ingredient);
     }
+
+    public void addDishToAvailableDishList(Dish dish)
+    {
+        dishesAvailable.Add(dish);
+    }
 }
