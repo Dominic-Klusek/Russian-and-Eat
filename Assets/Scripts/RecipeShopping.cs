@@ -9,7 +9,7 @@ public class RecipeShopping : MonoBehaviour {
     public int buttonSpacing = 50;
     public GameObject buyItemButtonPrefab;
 
-    private List<Dish> unpurchasedDishList;
+    private List<Dish> unpurchasedUncraftableDishList;
     private List<Dish> unpurchasedCraftableDishList;
     private List<Button> displayedButtons;
     private Transform scrollContentContainer;
@@ -25,31 +25,41 @@ public class RecipeShopping : MonoBehaviour {
 
     private void init()
     {
-        unpurchasedDishList = new List<Dish>();
+        unpurchasedUncraftableDishList = new List<Dish>();
         unpurchasedCraftableDishList = new List<Dish>();
-        initUnpurchasedDishList();
+        initUnpurchasedUncraftableDishList();
         updateCraftableDishList();
 
         scrollContentContainer = transform.Find("Viewport/Content");
         updateButtonsForEachCraftableDish();
     }
 
-    private void initUnpurchasedDishList()
+    private void initUnpurchasedUncraftableDishList()
     {
         List<Dish> allDishes = GameManager.getInstance().getAllDishes();
         List<Dish> purchasedDishList = GameManager.getInstance().getDishesAvailable();
-        unpurchasedDishList = allDishes.Except(purchasedDishList).ToList();
+        unpurchasedUncraftableDishList = allDishes.Except(purchasedDishList).ToList();
     }
 
     private void updateCraftableDishList()
     {
-        if (unpurchasedDishList == null)
-            initUnpurchasedDishList();
-        foreach (Dish dish in unpurchasedDishList)
+        if (unpurchasedUncraftableDishList == null)
+            initUnpurchasedUncraftableDishList();
+
+        List<Dish> dishesMarkedAsCraftable = new List<Dish>();
+        foreach (Dish dish in unpurchasedUncraftableDishList)
         {
             if (GameManager.getInstance().isDishCraftable(dish))
+            {
                 unpurchasedCraftableDishList.Add(dish);
+                dishesMarkedAsCraftable.Add(dish);
+            }
         }
+
+        foreach (Dish dish in dishesMarkedAsCraftable)
+            unpurchasedUncraftableDishList.Remove(dish);
+
+        Debug.Log("Craftable count: " + unpurchasedCraftableDishList.Count);
     }
 
     private void updateButtonsForEachCraftableDish()
@@ -90,12 +100,12 @@ public class RecipeShopping : MonoBehaviour {
         if (GameManager.getInstance().getPlayerMoney() >= costPerRecipe)
         {
             GameManager.getInstance().addDishToAvailableDishList(
-                unpurchasedDishList[recipeIndex]);
+                unpurchasedUncraftableDishList[recipeIndex]);
             GameManager.getInstance().spendMoney(costPerRecipe);
 
             moneyDisplayer.updatePlayerMoneyDisplayed();
 
-            unpurchasedDishList.RemoveAt(recipeIndex);
+            unpurchasedUncraftableDishList.RemoveAt(recipeIndex);
             unpurchasedCraftableDishList.RemoveAt(recipeIndex);
             updateButtonsForEachCraftableDish();
         }
