@@ -98,7 +98,6 @@ public class RecipeShopping : MonoBehaviour {
 
     private void buyRecipeAndUpdateButtons(int recipeIndex, Button button)
     {
-        Debug.Log("Start buy");
         if (GameManager.getInstance().getPlayerMoney() >= costPerRecipe)
         {
             GameManager.getInstance().addDishToAvailableDishList(
@@ -112,7 +111,6 @@ public class RecipeShopping : MonoBehaviour {
         }
         else
             StartCoroutine(indicateIngredientNotBought(button));
-        Debug.Log("Start finish");
     }
 
     private IEnumerator indicateIngredientNotBought(Button button)

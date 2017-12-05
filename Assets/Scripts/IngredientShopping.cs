@@ -19,7 +19,7 @@ public class IngredientShopping : MonoBehaviour {
     void Start()
     {
         // for testing
-        GameManager.getInstance().awardPlayerMoney(400);
+        //GameManager.getInstance().awardPlayerMoney(400);
         moneyDisplayer = GameObject.Find("Player Money Indicator").GetComponent<PlayerMoneyIndicator>();
         moneyDisplayer.updatePlayerMoneyDisplayed();
 
