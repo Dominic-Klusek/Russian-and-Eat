@@ -27,6 +27,7 @@ public class RecipeShopping : MonoBehaviour {
     {
         unpurchasedUncraftableDishList = new List<Dish>();
         unpurchasedCraftableDishList = new List<Dish>();
+        displayedButtons = new List<Button>();
         initUnpurchasedUncraftableDishList();
         updateCraftableDishList();
 
@@ -62,6 +63,8 @@ public class RecipeShopping : MonoBehaviour {
 
     private void updateButtonsForEachCraftableDish()
     {
+        foreach (Button b in displayedButtons)
+            Destroy(b.gameObject);
         displayedButtons = new List<Button>();
         //Button button = scrollContentContainer.GetComponentInChildren<Button>();
         //button.GetComponentInChildren<Text>().text = dishList[1].ToString();
@@ -81,6 +84,7 @@ public class RecipeShopping : MonoBehaviour {
             // throwing out of index exception. giving value of i to a variable
             // and passing the variable works fine though.
             int indexForArgument = i;
+            displayedButtons.Add(buttonElement);
             buttonElement.onClick.AddListener(delegate {
                 buyRecipeAndUpdateButtons(indexForArgument, buttonElement); });
         }
