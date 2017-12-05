@@ -259,8 +259,8 @@ public class GameManager : MonoBehaviour {
     }
 
     // returns true if ingredientsAvailable contains all the ingredients
-    // the given dish contains
-    public bool verifyDishCanBeMadeWithAvailableIngredients(Dish dish)
+    // int the given dish
+    public bool isDishCraftable(Dish dish)
     {
         foreach (Ingredient ingredient in dish.getIngredientList())
         {
