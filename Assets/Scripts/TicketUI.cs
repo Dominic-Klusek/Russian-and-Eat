@@ -5,10 +5,20 @@ using UnityEngine;
 
 public class TicketUI : MonoBehaviour
 {
-    private static TicketUI instance;
+    [Range(0, 10)]
+    public int secondsUntilNewOrder = 5;
+    public int maxTickets = 4;
     public int ingredientButtonsSpacing = 50;
-    private List<Dish> dishList;
     public GameObject ticketButtonPrefab;
+
+    private static TicketUI instance;
+
+    private List<Dish> dishList;
+    private List<Dish> currentDishesRequested;
+    private List<Button> currentTicketButtons;
+    private Transform scrollContentContainer;
+    private Character player;
+    private float timer = 0;
 
     private void Awake()
     {
@@ -23,11 +33,26 @@ public class TicketUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        init();
+    }
+
+    private void init()
+    {
         dishList = FindObjectOfType<GameManager>().getDishesAvailable();
-        var scrollContentContainer = transform.Find("Scroll View/Viewport/Content");
-        //Button button = scrollContentContainer.GetComponentInChildren<Button>();
-        //button.GetComponentInChildren<Text>().text = dishList[1].ToString();
-        for (int i = 0; i < dishList.Count; i++)
+        currentDishesRequested = new List<Dish>();
+        scrollContentContainer = transform.Find("Scroll View/Viewport/Content");
+        currentTicketButtons = new List<Button>();
+        Character player = FindObjectOfType<Character>();
+        refreshTicketButtons();   
+    }
+
+    private void refreshTicketButtons()
+    {
+        foreach (Button button in currentTicketButtons)
+            Destroy(button.gameObject);
+        currentTicketButtons = new List<Button>();
+
+        for (int i = 0; i < currentDishesRequested.Count; i++)
         {
             GameObject button = Instantiate(ticketButtonPrefab) as GameObject;
 
@@ -35,16 +60,20 @@ public class TicketUI : MonoBehaviour
             // false makes its transform local to the new parent
             button.transform.SetParent(scrollContentContainer.transform, false);
             button.transform.Translate(0, -ingredientButtonsSpacing * i, 0);
-            
-            Dish buttonDish = dishList[i];
-            
+
+            Dish buttonDish = currentDishesRequested[i];
+
             Button buttonElement = button.GetComponent<Button>();
             buttonElement.GetComponentInChildren<Text>().text = buttonDish.ToString();
-            Character player = GameObject.FindObjectOfType<Character>();
+            currentTicketButtons.Add(buttonElement);
+
+            if (player == null)
+                player = FindObjectOfType<Character>();
+
             buttonElement.onClick.AddListener(
                 delegate {
                     if (player.submitCreatedDishToMatchOrderedDish(buttonDish))
-                        StartCoroutine(indicateCorrectDishWasMade(buttonElement));
+                        correctDishMade(buttonDish);
                     else
                         StartCoroutine(indicateIncorrectDishWasMade(buttonElement));
                 });
@@ -54,7 +83,21 @@ public class TicketUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentDishesRequested.Count < maxTickets)
+        {
+            timer += Time.deltaTime / secondsUntilNewOrder;
+            if (timer >= 1)
+            {
+                generateNewTicket();
+                timer = 0;
+            }
+        }
+    }
 
+    private void generateNewTicket()
+    {
+        currentDishesRequested.Add(GameManager.getInstance().getRandomAvailableDish());
+        refreshTicketButtons();
     }
 
     private void OnDestroy()
@@ -67,11 +110,10 @@ public class TicketUI : MonoBehaviour
         return instance;
     }
 
-    private IEnumerator indicateCorrectDishWasMade(Button button)
+    private void correctDishMade(Dish dish)
     {
-        button.image.color = Color.green;
-        yield return new WaitForSeconds(1);
-        button.image.color = Color.white;
+        currentDishesRequested.Remove(dish);
+        refreshTicketButtons();
     }
 
     private IEnumerator indicateIncorrectDishWasMade(Button button)
