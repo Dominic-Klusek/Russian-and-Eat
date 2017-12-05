@@ -270,4 +270,9 @@ public class GameManager : MonoBehaviour {
         }
         return true;
     }
+
+    public Dish getRandomAvailableDish()
+    {
+        return dishesAvailable[UnityEngine.Random.Range(0, dishesAvailable.Count-1)];
+    }
 }
