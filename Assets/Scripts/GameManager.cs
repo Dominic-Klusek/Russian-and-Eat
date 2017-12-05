@@ -257,4 +257,17 @@ public class GameManager : MonoBehaviour {
     {
         dishesAvailable.Add(dish);
     }
+
+    // returns true if ingredientsAvailable contains all the ingredients
+    // the given dish contains
+    public bool verifyDishCanBeMadeWithAvailableIngredients(Dish dish)
+    {
+        foreach (Ingredient ingredient in dish.getIngredientList())
+        {
+            // if ingredient isnt found in ingredientsAvailable
+            if (ingredientsAvailable.IndexOf(ingredient) == -1)
+                return false;
+        }
+        return true;
+    }
 }
