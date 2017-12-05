@@ -11,10 +11,13 @@ public class IngredientShopping : MonoBehaviour {
 
     private List<Ingredient> unPurchasedIngredientList;
     private List<Button> ingredientBuyingButtons;
-
+    private PlayerMoneyIndicator moneyDisplayer;
     // Use this for initialization
     void Start()
     {
+        moneyDisplayer = GameObject.Find("Player Money Indicator").GetComponent<PlayerMoneyIndicator>();
+        moneyDisplayer.updatePlayerMoneyDisplayed();
+
         ingredientBuyingButtons = new List<Button>();
         List<Ingredient> allIngredientList = GameManager.getInstance().getAllIngredients();
         List<Ingredient> purchasedIngredientList = GameManager.getInstance().getIngredientsAvailable();
@@ -60,6 +63,7 @@ public class IngredientShopping : MonoBehaviour {
             GameManager.getInstance().addIngredientToAvailableIngredientsList(
                 unPurchasedIngredientList[ingredientIndex]);
             GameManager.getInstance().spendMoney(costPerIngredient);
+            moneyDisplayer.updatePlayerMoneyDisplayed();
         }
         else
             StartCoroutine(indicateIngredientNotBought(ingredientBuyingButtons[ingredientIndex]));
