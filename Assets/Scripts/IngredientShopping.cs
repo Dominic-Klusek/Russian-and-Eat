@@ -15,6 +15,8 @@ public class IngredientShopping : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        // for testing
+        //GameManager.getInstance().awardPlayerMoney(400);
         moneyDisplayer = GameObject.Find("Player Money Indicator").GetComponent<PlayerMoneyIndicator>();
         moneyDisplayer.updatePlayerMoneyDisplayed();
 
@@ -55,7 +57,7 @@ public class IngredientShopping : MonoBehaviour {
     private void buyIngredientAndRemoveButton(int ingredientIndex)
     {
         Debug.Log("index = " + ingredientIndex);
-        if (GameManager.getInstance().getPlayerMoney() > costPerIngredient)
+        if (GameManager.getInstance().getPlayerMoney() >= costPerIngredient)
         {
             Destroy(ingredientBuyingButtons[ingredientIndex].gameObject);
             //ingredientBuyingButtons.RemoveAt(ingredientIndex);
