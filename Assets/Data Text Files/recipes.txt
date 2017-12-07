@@ -3,8 +3,8 @@
 bread	water,flour	baked	0
 water	water	raw	0
 flour	flour	raw	0
-soda	soda	raw	20
+soda	soda	raw	5
 cake	milk,flour,sugar	baked	60
-chocolate cake	milk,flour,sugar,chocolate	baked	75
-chocolate egg custard	milk,sugar,eggs	baked	45
+chocolate cake	milk,flour,sugar,chocolate	baked	80
 egg custard	milk,sugar,eggs	baked	45
+chocolate egg custard	milk,sugar,eggs	baked	65
