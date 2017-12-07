@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour {
     public bool isFryingAvailable = false;
     public bool isBoilingAvailable = false;
 
-    public string[] namesOfStartingIngredients = { "water", "flour" };
-    public string[] namesOfStartingDishes = { "bread" };
-
     private int playerMoney = 0;
 
     private List<Ingredient> allIngredients;
@@ -44,13 +41,20 @@ public class GameManager : MonoBehaviour {
         initIngredientsAvailable();
         dishesAvailable = new List<Dish>();
         initDishesAvailable();
-        
+        /*
         foreach (Ingredient ing in allIngredients)
             Debug.Log(ing.ToString());
         
         foreach (Dish d in allDishes)
             Debug.Log(d.ToString());
-            
+        */
+        Debug.Log("Availables:\n");
+
+        foreach (Ingredient ing in ingredientsAvailable)
+            Debug.Log(ing.ToString());
+
+        foreach (Dish d in dishesAvailable)
+            Debug.Log(d.ToString());
     }
 
     private void OnDestroy()
@@ -117,7 +121,6 @@ public class GameManager : MonoBehaviour {
             if (line[0] == commentMarker)
                 continue;
             string[] ingredientDetails = line.Split(detailDelim);
-            Debug.Log(ingredientDetails[3]);
             allIngredients.Add(new Ingredient(ingredientDetails[0],
                 ingredientDetails[1],
                 ingredientDetails[2],
@@ -158,17 +161,19 @@ public class GameManager : MonoBehaviour {
 
     private void initIngredientsAvailable()
     {
-        foreach (string ingredientName in namesOfStartingIngredients)
+        foreach (Ingredient i in allIngredients)
         {
-            ingredientsAvailable.Add(findIngredientByName(ingredientName));
+            if (i.getPurchasePrice() == 0)
+                ingredientsAvailable.Add(i);
         }
     }
 
     private void initDishesAvailable()
     {
-        foreach (string dishName in namesOfStartingDishes)
+        foreach (Dish d in allDishes)
         {
-            dishesAvailable.Add(findDishByName(dishName));
+            if (d.getPurchasePrice() == 0)
+                dishesAvailable.Add(d);
         }
     }
 
