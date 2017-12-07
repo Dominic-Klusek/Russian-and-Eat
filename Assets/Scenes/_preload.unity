@@ -153,6 +153,8 @@ MonoBehaviour:
   - flour
   namesOfStartingDishes:
   - bread
+  - water
+  - flour
 --- !u!114 &1342170340
 MonoBehaviour:
   m_ObjectHideFlags: 0
