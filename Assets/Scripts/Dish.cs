@@ -5,29 +5,33 @@ using UnityEngine;
 public class Dish {
     public enum CookingStatus { RAW, BAKED, STOVE_COOKED, BOILED, FRIED };
 
-    public Dish(string name, List<Ingredient> ingredients, CookingStatus cookingStatus)
+    public Dish(string name, List<Ingredient> ingredients, CookingStatus cookingStatus, int price)
     {
-        this.name = name;
-        this.ingredients = ingredients;
-        this.cookingStatus = cookingStatus;
+        init(name, ingredients, cookingStatus, price);
     }
-    
-    public Dish(string name, Ingredient[] ingredients, CookingStatus cookingStatus)
+
+    public Dish(string name, Ingredient[] ingredients, CookingStatus cookingStatus, int price)
     {
         this.name = name;
         this.ingredients = new List<Ingredient>(ingredients);
-        this.cookingStatus = cookingStatus;
+        init(name, new List<Ingredient>(ingredients), cookingStatus, price);
     }
 
-    public Dish(string name, string[] ingredients, CookingStatus cookingStatus)
+    public Dish(string name, string[] ingredients, CookingStatus cookingStatus, int price)
     {
         List <Ingredient> ingredientList = new List<Ingredient>();
         foreach (string str in ingredients)
             ingredientList.Add(new Ingredient(str));
 
+        init(name, ingredientList, cookingStatus, price);
+    }
+    
+    private void init(string name, List<Ingredient> ingredients, CookingStatus cookingStatus, int price)
+    {
         this.name = name;
-        this.ingredients = ingredientList;
+        this.ingredients = ingredients;
         this.cookingStatus = cookingStatus;
+        this.purchasePrice = price;
     }
 
     public override string ToString()
@@ -35,7 +39,8 @@ public class Dish {
         string ret = name + ": ";
         foreach (Ingredient ing in ingredients)
             ret += ing.getIngredientName() + ", ";
-        ret += cookingStatus;
+        ret += cookingStatus + ", ";
+        ret += purchasePrice;
         return ret;
     }
 
@@ -69,7 +74,7 @@ public class Dish {
 
     public static Dish getEmptyDish()
     {
-        return new Dish("Unfinished Dish", new List<Ingredient>(), CookingStatus.RAW);
+        return new Dish("Unfinished Dish", new List<Ingredient>(), CookingStatus.RAW, 0);
     }
 
     // this may not take into account having a different order of ingredients.
@@ -83,7 +88,12 @@ public class Dish {
     {
         return name;
     }
-    
+
+    public int getPurchasePrice()
+    {
+        return purchasePrice;
+    }
+
     public List<Ingredient> getIngredientList()
     {
         return ingredients;
@@ -116,4 +126,5 @@ public class Dish {
     private string name;
     private List<Ingredient> ingredients;
     private CookingStatus cookingStatus;
+    private int purchasePrice;
 }

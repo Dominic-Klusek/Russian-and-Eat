@@ -44,13 +44,13 @@ public class GameManager : MonoBehaviour {
         initIngredientsAvailable();
         dishesAvailable = new List<Dish>();
         initDishesAvailable();
-        /*
-        foreach (Ingredient ing in ingredientsAvailable)
+        
+        foreach (Ingredient ing in allIngredients)
             Debug.Log(ing.ToString());
         
-        foreach (Dish d in dishesAvailable)
+        foreach (Dish d in allDishes)
             Debug.Log(d.ToString());
-            */
+            
     }
 
     private void OnDestroy()
@@ -117,20 +117,25 @@ public class GameManager : MonoBehaviour {
             if (line[0] == commentMarker)
                 continue;
             string[] ingredientDetails = line.Split(detailDelim);
+            Debug.Log(ingredientDetails[3]);
             allIngredients.Add(new Ingredient(ingredientDetails[0],
                 ingredientDetails[1],
-                ingredientDetails[2]));
+                ingredientDetails[2],
+                Int32.Parse(ingredientDetails[3])));
         }
     }
 
     private void initDishes()
     {
+        char commentMarker = '#';
         char detailDelim = '\t';
         char ingredientDelim =',';
         char lineDelim = '\n';
         string[] fileLines = recipesFile.text.Split(lineDelim);
         foreach (string line in fileLines)
         {
+            if (line[0] == commentMarker)
+                continue;
             string[] dishDetails = line.Split(detailDelim);
             string[] ingredientNames = dishDetails[1].Split(ingredientDelim);
 
@@ -146,8 +151,8 @@ public class GameManager : MonoBehaviour {
             ingredients.Sort();
             allDishes.Add(new Dish(dishDetails[0],
                 ingredients,
-                (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()))
-            );
+                (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()),
+                Int32.Parse(dishDetails[3])));
         }
     }
 
