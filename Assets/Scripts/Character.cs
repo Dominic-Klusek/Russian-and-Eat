@@ -137,4 +137,9 @@ public class Character : MonoBehaviour
         else
             ingredientDisplayer.clearPlayerIngredientsDisplayer();
     }
+
+	public void translateIngredient(Ingredient ingredient)
+	{
+		
+	}
 }
