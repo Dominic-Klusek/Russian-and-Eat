@@ -141,7 +141,7 @@ public class Character : MonoBehaviour
 
 	public void translateIngredient(Ingredient ingredient)
 	{
-		if (russianSound != null)
-			SoundManager.getInstance().playAudioClip(ingredient.getRussianSound());
+		/*if (russianSound != null)
+			SoundManager.getInstance().playAudioClip(ingredient.getRussianSound());*/
 	}
 }

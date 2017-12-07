@@ -6,6 +6,7 @@ public class HelperTranslation : MonoBehaviour {
 
 	GameObject helper;
 	public Canvas helperUI;
+	public Canvas textUI;
 	public GameObject[] floorTiles;
 	public GameObject character;
 
@@ -13,6 +14,7 @@ public class HelperTranslation : MonoBehaviour {
 	void Start () {
 		helper = GameObject.Find ("HelperGuy");
 		helperUI.tag = "Popup UI";
+		textUI.tag = "Popup UI";
 	}
 
 	// Update is called once per frame
@@ -38,9 +40,10 @@ public class HelperTranslation : MonoBehaviour {
 
 		if (character.GetComponent<Character>().finishedMovement) {
 			//prevent multiple instances of popup UIs from existing
-			if (GameObject.FindGameObjectWithTag ("Popup UI") == null)
+			if (GameObject.FindGameObjectWithTag ("Popup UI") == null){
 				Instantiate (helperUI);//create instance of helper ui
-
+				Instantiate (textUI);//create instance of textUI here
+			}
 			floorTiles = GameObject.FindGameObjectsWithTag ("Floor");
 			foreach (GameObject FloorTile in floorTiles) {
 				FloorTile.GetComponent<Move> ().interactable = false;

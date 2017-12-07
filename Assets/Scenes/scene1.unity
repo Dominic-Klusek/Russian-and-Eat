@@ -722,6 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helperUI: {fileID: 223097429114250186, guid: 89a15a3e64517489c81b7f01a613d9c2, type: 2}
+  textUI: {fileID: 223740156360507828, guid: 0f33f6eda198e47cf927e801a7678185, type: 2}
   floorTiles: []
   character: {fileID: 0}
 --- !u!4 &170631282 stripped
@@ -4418,6 +4419,7 @@ MonoBehaviour:
   ingredientButtonsSpacing: 50
   ticketButtonPrefab: {fileID: 1233973649746164, guid: 8a7c34f988ee1d747822998e956ea9ce,
     type: 2}
+  tutorialMode: 0
 --- !u!114 &1850791412
 MonoBehaviour:
   m_ObjectHideFlags: 0

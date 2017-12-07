@@ -10,6 +10,7 @@ public class HelperTranslationUI : MonoBehaviour {
 	public int ingredientButtonsSpacing = 30;
 	public GameObject ingredientButtonPrefab;
 	public GameObject[] floorTiles;
+	public GameObject textUI;
 
 	private void Awake()
 	{
@@ -69,6 +70,8 @@ public class HelperTranslationUI : MonoBehaviour {
 			FloorTile.GetComponent<Move>().interactable = true;
 		}
 
+		textUI = GameObject.Find("Text(Clone)");
 		Destroy(gameObject);
+		Destroy(textUI);
 	}
 }
