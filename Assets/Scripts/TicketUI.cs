@@ -10,6 +10,7 @@ public class TicketUI : MonoBehaviour
     public int maxTickets = 4;
     public int ingredientButtonsSpacing = 50;
     public GameObject ticketButtonPrefab;
+    public bool tutorialMode = false;
 
     private static TicketUI instance;
 
@@ -43,12 +44,21 @@ public class TicketUI : MonoBehaviour
         scrollContentContainer = transform.Find("Scroll View/Viewport/Content");
         currentTicketButtons = new List<Button>();
         Character player = FindObjectOfType<Character>();
+        if (tutorialMode)
+        {
+            currentDishesRequested.Add(GameManager.getInstance().findDishByName("bread"));
+            maxTickets = 0;
+        }
         refreshTicketButtons();   
     }
 
     private void refreshTicketButtons()
     {
+<<<<<<< HEAD
 		StopAllCoroutines ();
+=======
+        StopAllCoroutines();
+>>>>>>> origin/master
         foreach (Button button in currentTicketButtons)
             Destroy(button.gameObject);
         currentTicketButtons = new List<Button>();

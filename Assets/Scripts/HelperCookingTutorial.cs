@@ -132,7 +132,7 @@ public class HelperCookingTutorial : MonoBehaviour {
 
                 dialogue.text = "Mmm, that smells great! Looks like the bread is ready!\n" +
                                 "To deliver the order, just click on the ticket.\n" +
-                                "If it flashes green, that means you correctly filled out the order.\n" +
+                                "If it disappears, that means you correctly filled out the order.\n" +
                                 "If it flashes red, something went wrong! Try making the dish again.";
                 break;
             case 7:
