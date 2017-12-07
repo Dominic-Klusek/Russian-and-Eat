@@ -427,7 +427,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224337932499727612}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.61
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -507,6 +507,7 @@ MonoBehaviour:
   ingredientButtonPrefab: {fileID: 1652942563159508, guid: 6905104a21aeea446953168e1236c5e7,
     type: 2}
   floorTiles: []
+  textUI: {fileID: 223740156360507828, guid: 0f33f6eda198e47cf927e801a7678185, type: 2}
 --- !u!114 &114435333555472262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -856,7 +857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -100}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224205457138955078

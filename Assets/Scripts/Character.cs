@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public AudioClip bakeSound;
     public AudioClip boilSound;
     public AudioClip frySound;
+	public AudioClip russianSound;
 
     private GameManager gameManager;
     private static Character instance;
@@ -140,6 +141,7 @@ public class Character : MonoBehaviour
 
 	public void translateIngredient(Ingredient ingredient)
 	{
-		
+		/*if (russianSound != null)
+			SoundManager.getInstance().playAudioClip(ingredient.getRussianSound());*/
 	}
 }
