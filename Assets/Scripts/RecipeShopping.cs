@@ -68,7 +68,7 @@ public class RecipeShopping : MonoBehaviour {
         displayedButtons = new List<Button>();
         //Button button = scrollContentContainer.GetComponentInChildren<Button>();
         //button.GetComponentInChildren<Text>().text = dishList[1].ToString();
-        for (int i = 0; i < unpurchasedCraftableDishList.Count; i++)
+        for (int i = 0; i < unpurchasedCraftableDishList.Count + unpurchasedUncraftableDishList.Count; i++)
         {
             GameObject button = Instantiate(buyItemButtonPrefab) as GameObject;
 
@@ -78,7 +78,16 @@ public class RecipeShopping : MonoBehaviour {
             button.transform.Translate(0, -buttonSpacing * i, 0);
 
             Button buttonElement = button.GetComponent<Button>();
-            buttonElement.GetComponentInChildren<Text>().text = unpurchasedCraftableDishList[i].ToString();
+            if (i < unpurchasedCraftableDishList.Count)
+            {
+                buttonElement.GetComponentInChildren<Text>().text = unpurchasedCraftableDishList[i].ToString();
+            }
+            else
+            {
+                buttonElement.GetComponentInChildren<Text>().text = 
+                    unpurchasedUncraftableDishList[i - unpurchasedCraftableDishList.Count].ToString();
+                buttonElement.interactable = false;
+            }
             // do not change this.
             // for some reason, passing i makes the method its being sent to get 2 (when tested with 2 ingredients)
             // throwing out of index exception. giving value of i to a variable
