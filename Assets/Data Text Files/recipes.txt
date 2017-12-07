@@ -1,4 +1,6 @@
-bread	water,flour	baked
-water	water	raw
-flour	flour	raw
-cake	milk,flour,sugar	baked
+# the pound symbol comments out a line.
+# recipe,	ingredients,	cooking-style,	price
+bread	water,flour	baked	0
+water	water	raw	0
+flour	flour	raw	0
+cake	milk,flour,sugar	baked	50

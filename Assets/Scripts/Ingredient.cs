@@ -11,10 +11,11 @@ public class Ingredient : IComparable<Ingredient> {
         russianName = copy.russianName;
     }
 
-    public Ingredient(string ingredientName, string transliteration, string russianName) {
+    public Ingredient(string ingredientName, string transliteration, string russianName, int price) {
         this.ingredientName = ingredientName;
         this.transliteration = transliteration;
         this.russianName = russianName;
+        this.purchasePrice = price;
     }
 
     public Ingredient(string ingredientName)
@@ -28,7 +29,8 @@ public class Ingredient : IComparable<Ingredient> {
     {
         return this.ingredientName + ", " +
                this.transliteration + ", " +
-               this.russianName;
+               this.russianName + ", " +
+               this.purchasePrice;
     }
 
     public override bool Equals(object obj)
@@ -67,7 +69,13 @@ public class Ingredient : IComparable<Ingredient> {
         return russianName;
     }
 
+    public int getPurchasePrice()
+    {
+        return purchasePrice;
+    }
+
     private string ingredientName;
     private string transliteration;
     private string russianName;
+    private int purchasePrice;
 }

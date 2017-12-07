@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour {
     public bool isFryingAvailable = false;
     public bool isBoilingAvailable = false;
 
-    public string[] namesOfStartingIngredients = { "water", "flour" };
-    public string[] namesOfStartingDishes = { "bread" };
-
     private int playerMoney = 0;
 
     private List<Ingredient> allIngredients;
@@ -45,12 +42,19 @@ public class GameManager : MonoBehaviour {
         dishesAvailable = new List<Dish>();
         initDishesAvailable();
         /*
-        foreach (Ingredient ing in ingredientsAvailable)
+        foreach (Ingredient ing in allIngredients)
             Debug.Log(ing.ToString());
         
+        foreach (Dish d in allDishes)
+            Debug.Log(d.ToString());
+        */
+        Debug.Log("Availables:\n");
+
+        foreach (Ingredient ing in ingredientsAvailable)
+            Debug.Log(ing.ToString());
+
         foreach (Dish d in dishesAvailable)
             Debug.Log(d.ToString());
-            */
     }
 
     private void OnDestroy()
@@ -119,18 +123,22 @@ public class GameManager : MonoBehaviour {
             string[] ingredientDetails = line.Split(detailDelim);
             allIngredients.Add(new Ingredient(ingredientDetails[0],
                 ingredientDetails[1],
-                ingredientDetails[2]));
+                ingredientDetails[2],
+                Int32.Parse(ingredientDetails[3])));
         }
     }
 
     private void initDishes()
     {
+        char commentMarker = '#';
         char detailDelim = '\t';
         char ingredientDelim =',';
         char lineDelim = '\n';
         string[] fileLines = recipesFile.text.Split(lineDelim);
         foreach (string line in fileLines)
         {
+            if (line[0] == commentMarker)
+                continue;
             string[] dishDetails = line.Split(detailDelim);
             string[] ingredientNames = dishDetails[1].Split(ingredientDelim);
 
@@ -146,24 +154,26 @@ public class GameManager : MonoBehaviour {
             ingredients.Sort();
             allDishes.Add(new Dish(dishDetails[0],
                 ingredients,
-                (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()))
-            );
+                (Dish.CookingStatus) Enum.Parse(typeof(Dish.CookingStatus), dishDetails[2].ToUpper()),
+                Int32.Parse(dishDetails[3])));
         }
     }
 
     private void initIngredientsAvailable()
     {
-        foreach (string ingredientName in namesOfStartingIngredients)
+        foreach (Ingredient i in allIngredients)
         {
-            ingredientsAvailable.Add(findIngredientByName(ingredientName));
+            if (i.getPurchasePrice() == 0)
+                ingredientsAvailable.Add(i);
         }
     }
 
     private void initDishesAvailable()
     {
-        foreach (string dishName in namesOfStartingDishes)
+        foreach (Dish d in allDishes)
         {
-            dishesAvailable.Add(findDishByName(dishName));
+            if (d.getPurchasePrice() == 0)
+                dishesAvailable.Add(d);
         }
     }
 
