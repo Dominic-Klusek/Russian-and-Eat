@@ -116,6 +116,8 @@ public class GameManager : MonoBehaviour {
         string[] fileLines = ingredientsFile.text.Split(lineDelim);
         foreach (string line in fileLines)
         {
+            if (line.Equals(""))
+                continue;
             // if the first char is the same as the commentMarker, 
             // skip all this and go to next iteration of the loop.
             if (line[0] == commentMarker)
@@ -137,6 +139,8 @@ public class GameManager : MonoBehaviour {
         string[] fileLines = recipesFile.text.Split(lineDelim);
         foreach (string line in fileLines)
         {
+            if (line.Equals(""))
+                continue;
             if (line[0] == commentMarker)
                 continue;
             string[] dishDetails = line.Split(detailDelim);
