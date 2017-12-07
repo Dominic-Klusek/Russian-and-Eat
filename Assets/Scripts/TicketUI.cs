@@ -48,6 +48,7 @@ public class TicketUI : MonoBehaviour
 
     private void refreshTicketButtons()
     {
+		StopAllCoroutines ();
         foreach (Button button in currentTicketButtons)
             Destroy(button.gameObject);
         currentTicketButtons = new List<Button>();
