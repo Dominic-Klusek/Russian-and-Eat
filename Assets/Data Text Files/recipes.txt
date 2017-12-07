@@ -1,2 +1,4 @@
 bread	water,flour	baked	test.png
+water	water	raw
+flour	flour	raw
 cake	milk,flour,sugar	baked	test.png
