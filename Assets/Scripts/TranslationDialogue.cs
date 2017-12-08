@@ -30,7 +30,6 @@ public class TranslationDialogue : MonoBehaviour
     public void translateIngredient(string transliteration)
     {
         ingredient = transliteration;
-        Debug.Log(ingredient);
     }
 
     void OnGUI()
