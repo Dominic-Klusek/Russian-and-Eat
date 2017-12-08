@@ -508,6 +508,7 @@ MonoBehaviour:
     type: 2}
   floorTiles: []
   textUI: {fileID: 223740156360507828, guid: 0f33f6eda198e47cf927e801a7678185, type: 2}
+  dialogue: {fileID: 0}
 --- !u!114 &114435333555472262
 MonoBehaviour:
   m_ObjectHideFlags: 1

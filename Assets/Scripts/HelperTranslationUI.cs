@@ -11,6 +11,7 @@ public class HelperTranslationUI : MonoBehaviour {
 	public GameObject ingredientButtonPrefab;
 	public GameObject[] floorTiles;
 	public GameObject textUI;
+    public TranslationDialogue dialogue;
 
 	private void Awake()
 	{
@@ -43,8 +44,14 @@ public class HelperTranslationUI : MonoBehaviour {
 				buttonIngredient.getRussianName();
 
 			Character player = GameObject.FindObjectOfType<Character>();
-			buttonElement.onClick.AddListener(delegate {player.translateIngredient(buttonIngredient);});//use to call translation function
-		}
+            dialogue = GameObject.Find("TranslationText").GetComponent<TranslationDialogue>();
+
+            string ingredientTransliteration = buttonIngredient.getTransliteration();
+
+            buttonElement.onClick.AddListener(delegate {dialogue.translateIngredient(ingredientTransliteration);});
+            buttonElement.onClick.AddListener(delegate {player.translateIngredient(buttonIngredient);});//use to call translation function
+            
+        }
 	}
 
 	// Update is called once per frame
