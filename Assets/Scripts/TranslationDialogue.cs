@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TranslationDialogue : MonoBehaviour
 {
-    private int next = 0;
+    private string ingredient = "";
     private Text dialogue;
     private Character player;
     private GameManager gameManager;
@@ -26,10 +26,13 @@ public class TranslationDialogue : MonoBehaviour
 
     void OnGUI()
     {
-        switch (next)
+        switch (ingredient)
         {
-            case 0:
+            case "":
                 dialogue.text = "What do you need translated?\n";
+                break;
+            case "water":
+                dialogue.text = "That's water!";
                 break;
             default:
                 break;
