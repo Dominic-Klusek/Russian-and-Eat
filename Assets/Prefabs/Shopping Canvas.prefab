@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costPerIngredient: 50
-  buttonSpacing: 50
+  buttonSpacing: 80
   buyItemButtonPrefab: {fileID: 1620205434090186, guid: 5ea172af55f10844fa1daf6c7679edbf,
     type: 2}
 --- !u!114 &114499394633072314
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costPerRecipe: 50
-  buttonSpacing: 50
+  buttonSpacing: 80
   buyItemButtonPrefab: {fileID: 1620205434090186, guid: 5ea172af55f10844fa1daf6c7679edbf,
     type: 2}
 --- !u!114 &114920775228792076
