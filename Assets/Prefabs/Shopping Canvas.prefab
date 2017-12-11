@@ -434,7 +434,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ingredients - $50
+  m_Text: Ingredients
 --- !u!114 &114227422948084266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -679,7 +679,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Recipes - $50
+  m_Text: Recipes
 --- !u!114 &114638288866015120
 MonoBehaviour:
   m_ObjectHideFlags: 1
