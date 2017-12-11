@@ -48,13 +48,15 @@ public class GameManager : MonoBehaviour {
         foreach (Dish d in allDishes)
             Debug.Log(d.ToString());
         */
+        /*
         Debug.Log("Availables:\n");
 
         foreach (Ingredient ing in ingredientsAvailable)
             Debug.Log(ing.ToString());
-
+            
         foreach (Dish d in dishesAvailable)
             Debug.Log(d.ToString());
+        */
     }
 
     private void OnDestroy()
