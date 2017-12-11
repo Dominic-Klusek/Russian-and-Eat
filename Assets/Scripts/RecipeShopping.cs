@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class RecipeShopping : MonoBehaviour {
-    public int costPerRecipe= 100;
     public int buttonSpacing = 50;
     public GameObject buyItemButtonPrefab;
 
@@ -107,11 +106,12 @@ public class RecipeShopping : MonoBehaviour {
 
     private void buyRecipeAndUpdateButtons(int recipeIndex, Button button)
     {
-        if (GameManager.getInstance().getPlayerMoney() >= costPerRecipe)
+        int cost = unpurchasedCraftableDishList[recipeIndex].getPurchasePrice();
+        if (GameManager.getInstance().getPlayerMoney() >= cost)
         {
             GameManager.getInstance().addDishToAvailableDishList(
                 unpurchasedCraftableDishList[recipeIndex]);
-            GameManager.getInstance().spendMoney(costPerRecipe);
+            GameManager.getInstance().spendMoney(cost);
 
             moneyDisplayer.updatePlayerMoneyDisplayed();
 

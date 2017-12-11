@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class IngredientShopping : MonoBehaviour {
-    public int costPerIngredient = 100;
     public int buttonSpacing = 50;
     public GameObject buyItemButtonPrefab;
 
@@ -19,7 +18,7 @@ public class IngredientShopping : MonoBehaviour {
     void Start()
     {
         // for testing
-        //GameManager.getInstance().awardPlayerMoney(400);
+        // GameManager.getInstance().awardPlayerMoney(400);
         moneyDisplayer = GameObject.Find("Player Money Indicator").GetComponent<PlayerMoneyIndicator>();
         moneyDisplayer.updatePlayerMoneyDisplayed();
 
@@ -78,12 +77,13 @@ public class IngredientShopping : MonoBehaviour {
 
     private void buyIngredientAndRemoveButton(int ingredientIndex)
     {
+        int cost = unpurchasedIngredientList[ingredientIndex].getPurchasePrice();
         Debug.Log("index = " + ingredientIndex);
-        if (GameManager.getInstance().getPlayerMoney() >= costPerIngredient)
+        if (GameManager.getInstance().getPlayerMoney() >= cost)
         {
             GameManager.getInstance().addIngredientToAvailableIngredientsList(
                 unpurchasedIngredientList[ingredientIndex]);
-            GameManager.getInstance().spendMoney(costPerIngredient);
+            GameManager.getInstance().spendMoney(cost);
 
             // now that it's purchased, remove from unpurchased list
             unpurchasedIngredientList.RemoveAt(ingredientIndex);
