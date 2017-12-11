@@ -71,7 +71,8 @@ public class TicketUI : MonoBehaviour
             Dish buttonDish = currentDishesRequested[i];
 
             Button buttonElement = button.GetComponent<Button>();
-            buttonElement.GetComponentInChildren<Text>().text = buttonDish.ToString();
+            buttonElement.GetComponentInChildren<Text>().text = 
+                buttonDish.ToStringWithoutPurchasePrice();
             currentTicketButtons.Add(buttonElement);
 
             if (player == null)

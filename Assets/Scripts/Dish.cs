@@ -44,6 +44,15 @@ public class Dish {
         return ret;
     }
 
+    public string ToStringWithoutPurchasePrice()
+    {
+        string ret = name + ": ";
+        foreach (Ingredient ing in ingredients)
+            ret += ing.getIngredientName() + ", ";
+        ret += cookingStatus + ", ";
+        return ret;
+    }
+
     public override bool Equals(object obj)
     {
         Dish other = obj as Dish;
