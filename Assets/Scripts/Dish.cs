@@ -61,12 +61,19 @@ public class Dish {
         if (!this.cookingStatus.Equals(other.cookingStatus))
             return false;
 
-        List<Ingredient> sortedIngredients = ingredients;
-        sortedIngredients.Sort();
+        // deep copy
+        List<Ingredient> sortedOtherIngredients = 
+            other.getIngredientList().ConvertAll(i => new Ingredient(i));
+        sortedOtherIngredients.Sort();
+
+        // deep copy
+        List<Ingredient> sortedThisIngredients =
+            this.getIngredientList().ConvertAll(i => new Ingredient(i));
+        sortedThisIngredients.Sort();
 
         for (int i = 0; i < ingredients.Count; i++)
         {
-            if (!this.ingredients[i].Equals(sortedIngredients[i]))
+            if (!sortedThisIngredients[i].Equals(sortedOtherIngredients[i]))
                 return false;
         }
         
