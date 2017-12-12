@@ -2,7 +2,6 @@
 # recipe,	ingredients,	cooking-style,	price
 bread	water,flour	baked	0
 water	water	raw	0
-flour	flour	raw	0
 soda	soda	raw	5
 cake	milk,flour,sugar	baked	60
 chocolate cake	milk,flour,sugar,chocolate	baked	80
