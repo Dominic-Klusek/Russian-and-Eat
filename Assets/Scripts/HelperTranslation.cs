@@ -47,7 +47,6 @@ public class HelperTranslation : MonoBehaviour {
 			floorTiles = GameObject.FindGameObjectsWithTag ("Floor");
 			foreach (GameObject FloorTile in floorTiles) {
 				FloorTile.GetComponent<Move> ().interactable = false;
-
 			}
 		}
 	}

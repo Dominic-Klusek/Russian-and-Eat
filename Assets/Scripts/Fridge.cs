@@ -46,14 +46,19 @@ public class Fridge : MonoBehaviour {
 
 		if (character.GetComponent<Character>().finishedMovement) {
 			//prevent multiple instances of popup UIs from existing
-			if (GameObject.FindGameObjectWithTag ("Popup UI") == null)
+			if (GameObject.Find ("OvenUI(Clone)") != null){
+				GameObject.Find("OvenUI(Clone)").GetComponent<OvenUI>().exitClick();
+				Instantiate (fridgeUI);
+			}
+			else if (GameObject.FindGameObjectWithTag ("Popup UI") == null)
 				Instantiate (fridgeUI);//create instance of oven ui
-
+			
 			floorTiles = GameObject.FindGameObjectsWithTag ("Floor");
 			foreach (GameObject FloorTile in floorTiles) {
 				FloorTile.GetComponent<Move> ().interactable = false;
 			floorTileMove.GetComponent<Move>().OnMouseDown();
-
+			//in else statement find popupUI object, delete that one
+			//then do everything in the if statement
 			}
 		}
     }

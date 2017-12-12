@@ -222,10 +222,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Welcome to Russian-and-Eat. I''m your guide, Vladimir.
-
-    The goal of this game is to teach you the Russian language and to cook Russian
-    cuisine.'
+  m_Text: 
 --- !u!222 &222704098856924518
 CanvasRenderer:
   m_ObjectHideFlags: 1

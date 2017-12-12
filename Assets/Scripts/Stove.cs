@@ -45,7 +45,11 @@ public class Stove : MonoBehaviour {
 
 		if (character.GetComponent<Character> ().finishedMovement) {
 			//prevent multiple instances of popup UIs from existing
-			if (GameObject.FindGameObjectWithTag ("Popup UI") == null)
+			if (GameObject.Find ("FridgeUI(Clone)") != null){
+				GameObject.Find("FridgeUI(Clone)").GetComponent<FridgeUI>().exitClick();
+				Instantiate (ovenUI);
+			}
+			else if (GameObject.FindGameObjectWithTag ("Popup UI") == null)
 				Instantiate (ovenUI);//create instance of oven ui
 
 			floorTiles = GameObject.FindGameObjectsWithTag ("Floor");
