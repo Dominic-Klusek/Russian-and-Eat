@@ -39,6 +39,8 @@ public class HelperCookingTutorial : MonoBehaviour {
         ingredientsButton1 = GameObject.Find("Player Ingredient Displayer Button").GetComponent<Button>();
         ingredientsButton.interactable = false;
         ingredientsButton1.interactable = false;
+		GameObject.Find ("Stove").GetComponent<Stove> ().notTutorial = false;
+		GameObject.Find ("Fridge").GetComponent<Fridge> ().notTutorial = false;
     }
 	
 	// Update is called once per frame
@@ -135,17 +137,20 @@ public class HelperCookingTutorial : MonoBehaviour {
                                 "If it disappears, that means you correctly filled out the order.\n" +
                                 "If it flashes red, something went wrong! Try making the dish again.";
                 break;
-            case 7:
+		case 7:
 			arrowObject6.GetComponent<SpriteRenderer> ().enabled = false;
 			arrowObject7.GetComponent<SpriteRenderer> ().enabled = true;
 
 
-                dialogue.text = "Nice Job! Looks like you're ready to open the restaurant!\n" +
-                                "After each day, we'll look at how much money we made.\n" +
-                                "At that time, we can decide what to improve the restaurant.\n" +
-                                "For now, let's get started!\n";
-                if (GUI.Button(new Rect(900, 625, 50, 50), "START"))
-                    gameManager.LoadNextScene();
+			dialogue.text = "Nice Job! Looks like you're ready to open the restaurant!\n" +
+			"After each day, we'll look at how much money we made.\n" +
+			"At that time, we can decide what to improve the restaurant.\n" +
+			"For now, let's get started!\n";
+			if (GUI.Button (new Rect (900, 625, 50, 50), "START")) {
+				GameObject.Find ("Stove").GetComponent<Stove> ().notTutorial = true;
+				GameObject.Find ("Fridge").GetComponent<Fridge> ().notTutorial = true;
+				gameManager.LoadNextScene ();
+			}
                 break;
             default:
 			    break;

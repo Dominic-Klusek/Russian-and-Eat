@@ -10,6 +10,7 @@ public class Stove : MonoBehaviour {
     public GameObject floorTileMove;
     public GameObject character;
     public bool interactable = true;
+	public bool notTutorial = true;
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +46,7 @@ public class Stove : MonoBehaviour {
 
 		if (character.GetComponent<Character> ().finishedMovement) {
 			//prevent multiple instances of popup UIs from existing
-			if (GameObject.Find ("FridgeUI(Clone)") != null){
+			if (GameObject.Find ("FridgeUI(Clone)") != null && notTutorial == true){
 				GameObject.Find("FridgeUI(Clone)").GetComponent<FridgeUI>().exitClick();
 				Instantiate (ovenUI);
 			}
